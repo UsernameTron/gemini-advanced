@@ -1,0 +1,16 @@
+{
+  "name": "disc-assessment",
+  "version": "1.0.0",
+  "description": "DISC Assessment Application for ISPN Technician Hiring",
+  "scripts": {
+    "frontend": "cd frontend && npm start",
+    "backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "build": "cd frontend && npm run build && cd ../backend && npm run build",
+    "start": "cd backend && npm run start:prod"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
