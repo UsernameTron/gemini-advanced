@@ -18,7 +18,7 @@ import redis
 
 # Import existing components from VectorDBRAG
 import sys
-sys.path.append('/Users/cpconnor/projects/Meld and RAG/VectorDBRAG')
+sys.path.append('/Users/cpconnor/projects/UnifiedAIPlatform/VectorDBRAG')
 
 from search_system import SearchSystem
 from config import Config
@@ -27,6 +27,10 @@ from integrations.analytics_integration import AnalyticsIntegration
 
 import base64
 from services.tts_service import TTSService
+
+# Import voice configuration system
+sys.path.append('/Users/cpconnor/projects/UnifiedAIPlatform')
+from voice.voice_config import voice_loader, build_voice_prompt_prefix, get_current_param
 
 
 class UnifiedSessionManager:
@@ -82,6 +86,20 @@ class UnifiedSessionManager:
         data = self.get_session_data(session_id)
         data.update(updates)
         self.set_session_data(session_id, data)
+    
+    def get_voice_config(self, session_id: str) -> Dict[str, Any]:
+        """Get voice configuration for session."""
+        session_data = self.get_session_data(session_id)
+        return session_data.get('voice_config', {})
+    
+    def set_voice_config(self, session_id: str, voice_config: Dict[str, Any]):
+        """Set voice configuration for session."""
+        self.update_session_data(session_id, {'voice_config': voice_config})
+    
+    def get_voice_prompt_prefix(self, session_id: str) -> str:
+        """Get voice-aware prompt prefix for session."""
+        voice_config = self.get_voice_config(session_id)
+        return build_voice_prompt_prefix(voice_config if voice_config else None)
 
 
 class UnifiedWebInterface:
@@ -500,6 +518,11 @@ class UnifiedWebInterface:
             
             register_agent_routes(self.app)
             print("✅ Comprehensive agent routes registered (including TTS)")
+            
+            # Register voice configuration routes
+            from voice.voice_routes import register_voice_routes
+            register_voice_routes(self.app)
+            print("✅ Voice configuration routes registered")
             
         except Exception as e:
             print(f"⚠️ Failed to register agent routes: {e}")

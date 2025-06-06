@@ -1,0 +1,239 @@
+{
+  "id": "satirical-voice",
+  "title": "Satirical Voice Transformation System",
+  "description": "Pulverize bland content into weaponized satire with maximum snark, surgical sarcasm, and the emotional subtlety of a jackhammer",
+  "version": "2.0",
+  "icon": "sentiment_very_satisfied",
+  "color": "#FBC02D",
+  "category": "tone-transformation",
+  "parameters": [
+    {
+      "id": "content",
+      "label": "Original Content",
+      "type": "textarea",
+      "required": true,
+      "placeholder": "Enter the text or describe the topic you want to transform with satirical treatment."
+    },
+    {
+      "id": "target",
+      "label": "Satirical Target",
+      "type": "select",
+      "options": [
+        { "value": "corporate", "label": "Corporate Nonsense & Cubicle Cults" },
+        { "value": "tech", "label": "Techno-Utopian Delusion & App Worship" },
+        { "value": "politics", "label": "Political Theatre & Gaslight Olympics" },
+        { "value": "academia", "label": "Ivory Tower Word Salad & Thesis Olympics" },
+        { "value": "consumer", "label": "Consumerism & Branded Existentialism" },
+        { "value": "self-help", "label": "Self-Help Snake Oil & Grindset Propaganda" },
+        { "value": "media", "label": "Content Regurgitation & Clickbait Clownery" }
+      ],
+      "default": "corporate",
+      "required": true
+    },
+    {
+      "id": "satireModes",
+      "label": "Satire Intensity & Approach",
+      "type": "select",
+      "options": [
+        { "value": "high-satire", "label": "Unfiltered Venom (no survivors, no apologies)" },
+        { "value": "strategic-snark", "label": "Weaponized Snark (truth hurts edition)" },
+        { "value": "soft-roast", "label": "Light Toasting (for HR-friendly takedowns)" },
+        { "value": "deadpan", "label": "Deadpan Derailment (sincere nonsense delivery)" },
+        { "value": "socratic", "label": "Dumb-On-Purpose (trap questions & smug burns)" }
+      ],
+      "default": "strategic-snark",
+      "required": true
+    },
+    {
+      "id": "techniques",
+      "label": "Primary Satirical Techniques",
+      "type": "select",
+      "options": [
+        { "value": "exaggeration", "label": "Hyperbole & Exaggeration" },
+        { "value": "ironic-reversal", "label": "Ironic Reversal" },
+        { "value": "parody", "label": "Parody & Imitation" },
+        { "value": "reduction", "label": "Reductio ad Absurdum" },
+        { "value": "juxtaposition", "label": "Incongruous Juxtaposition" },
+        { "value": "euphemism", "label": "Satirical Euphemism & Understatement" }
+      ],
+      "default": "exaggeration",
+      "required": false
+    },
+    {
+      "id": "voiceStyle",
+      "label": "Voice & Style",
+      "type": "select",
+      "options": [
+        { "value": "eloquent", "label": "Eloquent Sophisticate (elevated, verbose)" },
+        { "value": "caustic", "label": "Caustic Observer (sharp, incisive)" },
+        { "value": "folksy", "label": "Folksy Truth-teller (accessible, colloquial)" },
+        { "value": "analytical", "label": "Pseudo-Analytical (mock-academic)" },
+        { "value": "insider", "label": "Jaded Insider (knowing, world-weary)" }
+      ],
+      "default": "caustic",
+      "required": false
+    },
+    {
+      "id": "outputFormat",
+      "label": "Output Format",
+      "type": "select",
+      "options": [
+        { "value": "essay", "label": "Satirical Essay/Commentary" },
+        { "value": "news", "label": "Satirical News Article" },
+        { "value": "review", "label": "Satirical Review/Critique" },
+        { "value": "guide", "label": "Satirical Guide/Manual" },
+        { "value": "dialogue", "label": "Satirical Dialogue/Interview" },
+        { "value": "social", "label": "Social Media Content" }
+      ],
+      "default": "essay",
+      "required": true
+    }
+  ],
+  "reasoningModes": [
+    "adversarial-critique",
+    "self-reflection",
+    "chain-of-thought"
+  ],
+  "toneMode": "high-satire",
+  "constraints": {
+    "maxWords": 1500,
+    "disallowedTerms": [
+      "satire profile",
+      "joke mechanism",
+      "humor algorithm",
+      "offensive language",
+      "discriminatory content"
+    ]
+  },
+  "styleMandatory": [
+    "Concrete specificity",
+    "Punching up not down",
+    "Rhythmic pacing",
+    "Strong opening and closing",
+    "Targeted precision"
+  ],
+  "styleForbidden": [
+    "Explaining the joke",
+    "Apologizing for critique",
+    "Padding with fluff",
+    "Punching down",
+    "Meandering digressions"
+  ],
+  "behaviorSwitches": {
+    "high-satire": "Maximum satirical force with sophisticated execution",
+    "strategic-snark": "Pointed criticism with constructive undertones",
+    "soft-roast": "Gentle, accessible humor with limited bite",
+    "deadpan": "Completely straight-faced absurdism",
+    "socratic": "Feigned naive questioning to expose contradictions"
+  },
+  "targetDefinitions": {
+    "corporate": {
+      "description": "Corporate Culture & Bureaucracy",
+      "elements": ["Management speak", "organizational rituals", "hierarchy worship", "efficiency theater", "performative professionalism"],
+      "references": ["Office Space", "Dilbert", "corporate mission statements", "team-building exercises", "synergy buzzwords"],
+      "absurdities": ["Elaborate procedures that impede actual work", "reverence for incompetent leadership", "euphemistic language for negative actions"]
+    },
+    "tech": {
+      "description": "Technology & Innovation Hype",
+      "elements": ["Techno-utopianism", "disruption rhetoric", "funding cycles", "innovation theater", "tech messiah figures"],
+      "references": ["Silicon Valley", "TED Talks", "pitch decks", "venture capital", "world-changing apps that solve trivial problems"],
+      "absurdities": ["Trivial conveniences presented as revolutionary", "technical solutions for social problems", "funding divorced from utility"]
+    },
+    "politics": {
+      "description": "Political Rhetoric & Posturing",
+      "elements": ["Empty campaign promises", "tribalism", "performative outrage", "linguistic manipulation", "symbolic gestures"],
+      "references": ["Political speeches", "cable news", "party platforms", "meaningless slogans", "partisan media"],
+      "absurdities": ["Words contradicting actions", "manufactured crises", "treating politics as team sports", "policy vs. presentation"]
+    },
+    "academia": {
+      "description": "Academic Pretension & Jargon",
+      "elements": ["Impenetrable jargon", "publication politics", "intellectual fashions", "citation games", "disciplinary turf wars"],
+      "references": ["Academic journals", "conference presentations", "peer review", "theory-laden abstracts", "funding proposals"],
+      "absurdities": ["Simple ideas hidden behind complex language", "status games disguised as intellectual pursuit", "knowing more and more about less and less"]
+    },
+    "consumer": {
+      "description": "Consumer Trends & Marketing",
+      "elements": ["Aspirational branding", "artificial needs", "status signaling", "commodity fetishism", "lifestyle marketing"],
+      "references": ["Luxury advertising", "influencer culture", "unboxing videos", "lifestyle brands", "product launches"],
+      "absurdities": ["Identity via consumption", "engineered dissatisfaction", "minimal differentiation presented as revolutionary", "price as quality proxy"]
+    },
+    "self-help": {
+      "description": "Self-Improvement Culture",
+      "elements": ["Quick-fix promises", "contradictory advice", "productivity worship", "authenticity as performance", "life optimization"],
+      "references": ["Self-help bestsellers", "motivational speakers", "productivity systems", "life hacks", "morning routines"],
+      "absurdities": ["Commodification of wisdom", "quantification of human experience", "pursuing happiness as productivity", "success theater"]
+    },
+    "media": {
+      "description": "Media & Entertainment Conventions",
+      "elements": ["Clickbait", "formulaic content", "manufactured controversy", "spectacle economics", "attention harvesting"],
+      "references": ["Headline conventions", "reality TV", "social media algorithms", "content farms", "engagement metrics"],
+      "absurdities": ["Medium over message", "emotional manipulation as business model", "predictability marketed as novelty"]
+    }
+  },
+  "satireModeDefinitions": {
+    "high-satire": {
+      "description": "High Satire Mode",
+      "tone": "Cold, merciless dissection with elegant contempt",
+      "humor": "Elaborate irony requiring high context awareness",
+      "restraint": "Minimal - full satirical force deployed",
+      "language": "Elevated, possibly archaic or formal diction",
+      "exemplars": ["Jonathan Swift", "Gore Vidal", "Christopher Hitchens"]
+    },
+    "strategic-snark": {
+      "description": "Strategic Snark Mode",
+      "tone": "Sharp critique balanced with constructive insight",
+      "humor": "Pointed observations that recognize absurdity while suggesting alternatives",
+      "restraint": "Moderate - criticism channeled toward productive ends",
+      "language": "Accessible but intelligent, avoiding excessive jargon",
+      "exemplars": ["Jon Stewart", "John Oliver", "Rebecca Solnit"]
+    },
+    "soft-roast": {
+      "description": "Soft Roast Mode",
+      "tone": "Gentle ribbing with underlying affection",
+      "humor": "Accessible comedy that invites subject into the joke",
+      "restraint": "High - criticism softened with goodwill",
+      "language": "Conversational, widely accessible",
+      "exemplars": ["Ellen DeGeneres", "Jim Gaffigan", "Nora Ephron"]
+    },
+    "deadpan": {
+      "description": "Deadpan Absurdism Mode",
+      "tone": "Completely straight-faced presentation of absurdity",
+      "humor": "Extreme logic taken to absurd conclusions without acknowledging the joke",
+      "restraint": "Paradoxical - extreme content with extremely controlled delivery",
+      "language": "Matter-of-fact, often technical or bureaucratic",
+      "exemplars": ["The Onion", "Steven Wright", "Wes Anderson"]
+    },
+    "socratic": {
+      "description": "Socratic Irony Mode",
+      "tone": "Feigned ignorance or naivety to expose absurdity",
+      "humor": "Questions and misunderstandings that reveal contradictions",
+      "restraint": "High - critique disguised as genuine inquiry",
+      "language": "Simple questions hiding complex critique",
+      "exemplars": ["Stephen Colbert (character)", "Borat", "Some Andy Kaufman"]
+    }
+  },
+  "examples": [
+    {
+      "input": {
+        "content": "Corporate wellness programs that encourage employees to track their steps, meditation minutes, and sleep quality while working 60-hour weeks",
+        "target": "corporate",
+        "satireModes": "high-satire",
+        "techniques": "ironic-reversal",
+        "voiceStyle": "caustic",
+        "outputFormat": "essay"
+      },
+      "output": "(Caustic satirical essay on corporate wellness programs that highlights the irony of monitoring employee health while ignoring structural workplace issues)"
+    },
+    {
+      "input": {
+        "content": "The latest AI tool that promises to revolutionize creativity by generating content based on prompts",
+        "target": "tech",
+        "satireModes": "strategic-snark",
+        "techniques": "reduction",
+        "voiceStyle": "insider",
+        "outputFormat": "review"
+      },
+      "output": "(Strategic-snark review from an insider perspective on AI creativity tools, reducing the hyperbolic claims to their logical absurdities while acknowledging genuine potential)"
+    }
+  ]
+}
