@@ -1,0 +1,496 @@
+{
+  "execution_summary": {
+    "start_time": "2025-06-10T19:35:19.085643",
+    "end_time": "2025-06-10T19:35:23.425123",
+    "duration_seconds": 4.33948,
+    "successful_phases": 4,
+    "total_phases": 4,
+    "success_rate": 1.0
+  },
+  "phase_results": {
+    "phase_1": {
+      "system_state": {
+        "critical_issues": [
+          "Import failed: agent_system.web_interface"
+        ],
+        "missing_templates": [],
+        "broken_routes": [],
+        "import_status": {
+          "agent_system.web_interface": "FAILED: cannot import name 'ExecutorWithFallback' from 'agents' (/Users/cpconnor/.pyenv/versions/3.10.13/lib/python3.10/site-packages/agents/__init__.py)",
+          "voice.voice_config": "SUCCESS",
+          "VectorDBRAG.search_system": "SUCCESS",
+          "services.tts_service": "SUCCESS"
+        },
+        "server_status": "RUNNING - Status: 200"
+      },
+      "architecture_analysis": {
+        "flask_routes": [
+          {
+            "path": "/static/<path:filename>",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "static"
+          },
+          {
+            "path": "/",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "index"
+          },
+          {
+            "path": "/api/session/status",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "session_status"
+          },
+          {
+            "path": "/api/unified/chat",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "unified_chat"
+          },
+          {
+            "path": "/api/unified/upload",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "unified_upload"
+          },
+          {
+            "path": "/api/unified/vector-stores",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "get_vector_stores"
+          },
+          {
+            "path": "/api/unified/preferences",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "update_preferences"
+          },
+          {
+            "path": "/dashboard",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "legacy_dashboard"
+          },
+          {
+            "path": "/analytics",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "legacy_analytics"
+          },
+          {
+            "path": "/health",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "health_check"
+          },
+          {
+            "path": "/agents",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "agents_dashboard"
+          },
+          {
+            "path": "/api/agents/query",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "agent_query"
+          },
+          {
+            "path": "/api/agents/workflow",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "agent_workflow"
+          },
+          {
+            "path": "/api/agents/research",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "research_agent"
+          },
+          {
+            "path": "/api/agents/performance",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "performance_agent"
+          },
+          {
+            "path": "/api/agents/coaching",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "coaching_agent"
+          },
+          {
+            "path": "/api/agents/code/analyze",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "code_analyzer_agent"
+          },
+          {
+            "path": "/api/agents/code/debug",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "code_debugger_agent"
+          },
+          {
+            "path": "/api/agents/code/repair",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "code_repair_agent"
+          },
+          {
+            "path": "/api/agents/test/generate",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "test_generator_agent"
+          },
+          {
+            "path": "/api/agents/image/analyze",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "image_agent"
+          },
+          {
+            "path": "/api/agents/audio/transcribe",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "audio_agent"
+          },
+          {
+            "path": "/api/rag/upload",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "upload_document"
+          },
+          {
+            "path": "/api/rag/status",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "rag_status"
+          },
+          {
+            "path": "/api/rag/search",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "search_documents"
+          },
+          {
+            "path": "/api/rag/reset",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "reset_knowledge_base"
+          },
+          {
+            "path": "/api/agents/status",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "agent_system_status"
+          },
+          {
+            "path": "/api/agents/optimize",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "optimize_agent_system"
+          },
+          {
+            "path": "/api/agents/types",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "agent_types"
+          },
+          {
+            "path": "/tts",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "tts_dashboard"
+          },
+          {
+            "path": "/api/tts/generate",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "generate_tts"
+          },
+          {
+            "path": "/api/tts/voices",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "get_tts_voices"
+          },
+          {
+            "path": "/api/tts/analyze",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "analyze_tts_text"
+          },
+          {
+            "path": "/api/tts/status",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "tts_status"
+          },
+          {
+            "path": "/api/agents/health",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "agent_health_check"
+          },
+          {
+            "path": "/api/voice/profiles",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "voice.get_voice_profiles"
+          },
+          {
+            "path": "/api/voice/profiles/<profile_id>",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "voice.get_voice_profile"
+          },
+          {
+            "path": "/api/voice/current",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "voice.get_current_voice_profile"
+          },
+          {
+            "path": "/api/voice/current",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "voice.set_current_voice_profile"
+          },
+          {
+            "path": "/api/voice/session/config",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "voice.get_session_voice_config"
+          },
+          {
+            "path": "/api/voice/session/config",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "voice.update_session_voice_config"
+          },
+          {
+            "path": "/api/voice/prompt-prefix",
+            "methods": [
+              "POST",
+              "OPTIONS"
+            ],
+            "endpoint": "voice.generate_voice_prompt_prefix"
+          },
+          {
+            "path": "/api/voice/parameters/<profile_id>/<param_id>/options",
+            "methods": [
+              "HEAD",
+              "OPTIONS",
+              "GET"
+            ],
+            "endpoint": "voice.get_parameter_options"
+          }
+        ],
+        "agent_types": [],
+        "voice_system_status": {
+          "error": "'VoiceConfigLoader' object has no attribute 'list_available_profiles'",
+          "loader_functional": false
+        },
+        "integration_points": []
+      },
+      "status": "COMPLETED",
+      "timestamp": "2025-06-10T19:35:23.011396"
+    },
+    "phase_2": {
+      "repair_plan": [
+        {
+          "task": "fix_import_agent_system_web_interface",
+          "priority": "HIGH",
+          "description": "Fix failed import: agent_system.web_interface",
+          "error": "FAILED: cannot import name 'ExecutorWithFallback' from 'agents' (/Users/cpconnor/.pyenv/versions/3.10.13/lib/python3.10/site-packages/agents/__init__.py)"
+        }
+      ],
+      "repair_results": {
+        "fix_import_agent_system_web_interface": {
+          "status": "LOGGED",
+          "note": "Import fix requires individual analysis"
+        }
+      },
+      "status": "COMPLETED",
+      "timestamp": "2025-06-10T19:35:23.011464"
+    },
+    "phase_3": {
+      "test_results": {
+        "voice_system_tests": {
+          "status": "ERROR",
+          "error": "'VoiceConfigLoader' object has no attribute 'list_available_profiles'"
+        },
+        "import_tests": {
+          "total_tests": 4,
+          "successful": 4,
+          "success_rate": 1.0,
+          "details": {
+            "agent_system.web_interface": "SUCCESS",
+            "voice.voice_config": "SUCCESS",
+            "VectorDBRAG.search_system": "SUCCESS",
+            "services.tts_service": "SUCCESS"
+          }
+        },
+        "endpoint_tests": {
+          "total_endpoints": 4,
+          "successful": 2,
+          "success_rate": 0.5,
+          "details": {
+            "/health": {
+              "status_code": 200,
+              "success": true,
+              "content_type": "application/json"
+            },
+            "/api/voice/config": {
+              "status_code": 404,
+              "success": false,
+              "content_type": "application/json"
+            },
+            "/api/agents": {
+              "status_code": 404,
+              "success": false,
+              "content_type": "application/json"
+            },
+            "/": {
+              "status_code": 200,
+              "success": true,
+              "content_type": "text/html; charset=utf-8"
+            }
+          }
+        },
+        "integration_tests": {
+          "voice_integration": "SUCCESS"
+        }
+      },
+      "status": "COMPLETED",
+      "timestamp": "2025-06-10T19:35:23.425072"
+    },
+    "phase_4": {
+      "performance_results": {
+        "import_times": {
+          "voice.voice_config": 1.9073486328125e-06,
+          "agent_system.web_interface": 2.1457672119140625e-06
+        },
+        "memory_usage": null,
+        "startup_time": null
+      },
+      "status": "COMPLETED",
+      "timestamp": "2025-06-10T19:35:23.425109"
+    }
+  },
+  "errors_encountered": [],
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "category": "Critical Issues",
+      "recommendation": "Address 1 critical issues",
+      "details": [
+        "Import failed: agent_system.web_interface"
+      ]
+    }
+  ]
+}

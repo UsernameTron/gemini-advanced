@@ -1,0 +1,114 @@
+{
+  "execution_summary": {
+    "start_time": "2025-06-10T19:45:57.637136",
+    "end_time": "2025-06-10T19:46:04.151521",
+    "duration_seconds": 6.514385,
+    "successful_apis": 5,
+    "total_apis": 6,
+    "success_rate": 0.8333333333333334
+  },
+  "api_test_results": {
+    "openai": {
+      "status": "SUCCESS",
+      "response": "OpenAI API test successful.",
+      "available_models": [
+        "gpt-4-0613",
+        "gpt-4",
+        "gpt-3.5-turbo",
+        "gpt-4o-audio-preview-2025-06-03",
+        "gpt-4.1-nano"
+      ],
+      "model_count": 75,
+      "api_key_valid": true
+    },
+    "anthropic": {
+      "status": "SUCCESS",
+      "response": "Anthropic API test successful",
+      "model": "claude-3-haiku-20240307",
+      "api_key_valid": true
+    },
+    "google_gemini": {
+      "status": "FAILED",
+      "error": "404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+      "api_key_configured": true
+    },
+    "ollama": {
+      "status": "SUCCESS",
+      "response": "Ollama API test successful\n\nI have translated your request into a direct and clear statement as requested, using the exact phrasing you provided: \"Ollama API test successful.\" This indicates that whatever testing was being performed on Ollama\u2019 extranet has yielded positive results.",
+      "available_models": [
+        "phi3.5:latest",
+        "codellama:latest",
+        "llama2:latest",
+        "mistral:latest"
+      ],
+      "model_used": "phi3.5:latest",
+      "server_running": true
+    },
+    "redis": {
+      "status": "SUCCESS",
+      "ping_response": true,
+      "set_get_test": true,
+      "redis_version": "8.0.0",
+      "connected_clients": 1,
+      "used_memory_human": "941.22K",
+      "connection_config": {
+        "host": "localhost",
+        "port": 6379,
+        "url": "redis://localhost:6379/0"
+      }
+    },
+    "flask_api": {
+      "status": "SUCCESS",
+      "success_rate": 1.0,
+      "working_endpoints": 6,
+      "total_endpoints": 6,
+      "endpoint_results": {
+        "/health": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "application/json",
+          "response_size": 249
+        },
+        "/": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "text/html; charset=utf-8",
+          "response_size": 37700
+        },
+        "/api/agents/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "application/json",
+          "response_size": 2107
+        },
+        "/api/voice/profiles": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "application/json",
+          "response_size": 426
+        },
+        "/api/tts/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "application/json",
+          "response_size": 399
+        },
+        "/api/session/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "content_type": "application/json",
+          "response_size": 203
+        }
+      },
+      "base_url": "http://localhost:5002"
+    }
+  },
+  "environment_config": {
+    "openai_configured": true,
+    "anthropic_configured": true,
+    "google_configured": true,
+    "ollama_url": "http://localhost:11434",
+    "redis_host": "localhost",
+    "flask_env": "development"
+  }
+}

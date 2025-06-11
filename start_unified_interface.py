@@ -45,7 +45,8 @@ def main():
         
         # Create and run the app
         app = create_unified_app()
-        app.run(debug=True, host='0.0.0.0', port=5001)
+        port = int(os.getenv('FLASK_RUN_PORT', '5002'))
+        app.run(debug=True, host='0.0.0.0', port=port)
         
     except ImportError as e:
         print(f"❌ Import error: {e}")

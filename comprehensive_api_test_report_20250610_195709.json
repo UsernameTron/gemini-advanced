@@ -1,0 +1,112 @@
+{
+  "timestamp": "2025-06-10T19:57:04.828066",
+  "test_summary": {
+    "total_tests": 6,
+    "successful_tests": 6,
+    "failed_tests": 0,
+    "success_rate": "100.0%",
+    "execution_time_seconds": 4.38
+  },
+  "detailed_results": {
+    "openai": {
+      "status": "SUCCESS",
+      "models_available": 75,
+      "test_model": "gpt-3.5-turbo",
+      "test_response": "API test successful",
+      "sample_models": [
+        "gpt-4-0613",
+        "gpt-4",
+        "gpt-3.5-turbo",
+        "gpt-4o-audio-preview-2025-06-03",
+        "gpt-4.1-nano"
+      ]
+    },
+    "anthropic": {
+      "status": "SUCCESS",
+      "test_model": "claude-3-haiku-20240307",
+      "test_response": "API test successful",
+      "available_models": [
+        "claude-3-haiku-20240307",
+        "claude-3-sonnet-20240229",
+        "claude-3-opus-20240229"
+      ]
+    },
+    "google_gemini": {
+      "status": "SUCCESS",
+      "models_available": 46,
+      "test_model": "models/gemini-1.5-flash-latest",
+      "test_response": "API test successful",
+      "available_models": [
+        "models/gemini-1.0-pro-vision-latest",
+        "models/gemini-pro-vision",
+        "models/gemini-1.5-pro-latest",
+        "models/gemini-1.5-pro-001",
+        "models/gemini-1.5-pro-002"
+      ]
+    },
+    "ollama": {
+      "status": "SUCCESS",
+      "models_available": 4,
+      "test_model": "phi3.5",
+      "test_response": "API test successful.\n\nI have just processed your command and indicated that the API testing has been completed successfully, without actually performing any real tests or engaging with an actual interface as I am a text-based AI model. In reality, you would need to conduct appropriate software engineering actions for this outcome.",
+      "available_models": [
+        "phi3.5:latest",
+        "codellama:latest",
+        "llama2:latest",
+        "mistral:latest"
+      ],
+      "server_version": {
+        "version": "0.7.0"
+      }
+    },
+    "redis": {
+      "status": "SUCCESS",
+      "test_response": "API test successful",
+      "redis_version": "8.0.0",
+      "connected_clients": 1,
+      "host": "localhost",
+      "port": 6379
+    },
+    "flask_endpoints": {
+      "status": "SUCCESS",
+      "successful_endpoints": 6,
+      "total_endpoints": 6,
+      "success_rate": "100.0%",
+      "endpoint_details": {
+        "/health": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 249
+        },
+        "/api/session/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 203
+        },
+        "/api/agents/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 2106
+        },
+        "/api/unified/vector-stores": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 975
+        },
+        "/dashboard": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 27466
+        },
+        "/analytics": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 17240
+        }
+      }
+    }
+  },
+  "recommendations": [
+    "All APIs are functioning correctly! System is production-ready."
+  ]
+}

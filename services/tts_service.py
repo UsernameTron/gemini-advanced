@@ -1,5 +1,7 @@
 import os
 from datetime import datetime
+import sys
+sys.path.append('/Users/cpconnor/projects/UnifiedAIPlatform/VectorDBRAG')
 from config import Config
 
 

@@ -1,0 +1,95 @@
+{
+  "timestamp": "2025-06-10T19:55:17.031543",
+  "test_summary": {
+    "total_tests": 6,
+    "successful_tests": 4,
+    "failed_tests": 2,
+    "success_rate": "66.7%",
+    "execution_time_seconds": 32.77
+  },
+  "detailed_results": {
+    "openai": {
+      "status": "SUCCESS",
+      "models_available": 75,
+      "test_model": "gpt-3.5-turbo",
+      "test_response": "API test successful",
+      "sample_models": [
+        "gpt-4-0613",
+        "gpt-4",
+        "gpt-3.5-turbo",
+        "gpt-4o-audio-preview-2025-06-03",
+        "gpt-4.1-nano"
+      ]
+    },
+    "anthropic": {
+      "status": "SUCCESS",
+      "test_model": "claude-3-haiku-20240307",
+      "test_response": "API test successful",
+      "available_models": [
+        "claude-3-haiku-20240307",
+        "claude-3-sonnet-20240229",
+        "claude-3-opus-20240229"
+      ]
+    },
+    "google_gemini": {
+      "status": "FAILED",
+      "error": "404 Gemini 1.0 Pro Vision has been deprecated on July 12, 2024. Consider switching to different model, for example gemini-1.5-flash.",
+      "error_type": "NotFound"
+    },
+    "ollama": {
+      "status": "FAILED",
+      "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=30)",
+      "error_type": "ReadTimeout"
+    },
+    "redis": {
+      "status": "SUCCESS",
+      "test_response": "API test successful",
+      "redis_version": "8.0.0",
+      "connected_clients": 1,
+      "host": "localhost",
+      "port": 6379
+    },
+    "flask_endpoints": {
+      "status": "SUCCESS",
+      "successful_endpoints": 6,
+      "total_endpoints": 6,
+      "success_rate": "100.0%",
+      "endpoint_details": {
+        "/health": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 249
+        },
+        "/api/session/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 203
+        },
+        "/api/agents/status": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 2107
+        },
+        "/api/unified/vector-stores": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 975
+        },
+        "/dashboard": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 27466
+        },
+        "/analytics": {
+          "status": "SUCCESS",
+          "status_code": 200,
+          "response_size": 17240
+        }
+      }
+    }
+  },
+  "recommendations": [
+    "Google Gemini API: Check API key validity and model availability. Consider updating to newer model names.",
+    "Ollama API: Ensure Ollama server is running locally on port 11434 and models are installed."
+  ]
+}

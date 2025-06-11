@@ -1,0 +1,98 @@
+{
+  "timestamp": "2025-06-10T18:29:42.613934",
+  "validation_summary": {
+    "total_time": 0.3612060546875,
+    "total_tests": 8,
+    "passed_tests": 1,
+    "failed_tests": 7,
+    "success_rate": 0.125,
+    "overall_success": false
+  },
+  "test_results": [
+    {
+      "test_name": "configuration_validation",
+      "success": true,
+      "duration": 3.886222839355469e-05,
+      "error": null,
+      "details": {
+        "config_environment": "testing",
+        "validation_errors": [],
+        "models_configured": [
+          "gpt-4o",
+          "gpt-4o-mini",
+          "gpt-4",
+          "gpt-3.5-turbo"
+        ],
+        "agent_config_loaded": true,
+        "rag_config_loaded": true
+      }
+    },
+    {
+      "test_name": "system_health_check",
+      "success": false,
+      "duration": 0.00438690185546875,
+      "error": "HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /health (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x103aea4a0>: Failed to establish a new connection: [Errno 61] Connection refused'))",
+      "details": {}
+    },
+    {
+      "test_name": "agent_factory_validation",
+      "success": false,
+      "duration": 0.350628137588501,
+      "error": "No module named 'agents.enhanced'",
+      "details": {}
+    },
+    {
+      "test_name": "flask_integration",
+      "success": false,
+      "duration": 0.0013766288757324219,
+      "error": "HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/enhanced/agents/status (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cfecd00>: Failed to establish a new connection: [Errno 61] Connection refused'))",
+      "details": {}
+    },
+    {
+      "test_name": "enhanced_endpoints",
+      "success": false,
+      "duration": 0.0010330677032470703,
+      "error": "HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/enhanced/agents/types (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cfeca60>: Failed to establish a new connection: [Errno 61] Connection refused'))",
+      "details": {
+        "endpoints_tested": []
+      }
+    },
+    {
+      "test_name": "agent_execution",
+      "success": false,
+      "duration": 0.0011780261993408203,
+      "error": "HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/enhanced/agents/query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10cfef4f0>: Failed to establish a new connection: [Errno 61] Connection refused'))",
+      "details": {
+        "execution_results": []
+      }
+    },
+    {
+      "test_name": "performance_validation",
+      "success": false,
+      "duration": 0.000164031982421875,
+      "error": "name 'EnhancedAgentFactory' is not defined",
+      "details": {}
+    },
+    {
+      "test_name": "concurrency_validation",
+      "success": false,
+      "duration": 0.0023758411407470703,
+      "error": "HTTPConnectionPool(host='localhost', port=5001): Max retries exceeded with url: /api/enhanced/agents/query (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x10d024670>: Failed to establish a new connection: [Errno 61] Connection refused'))",
+      "details": {}
+    }
+  ],
+  "performance_metrics": {
+    "avg_test_duration": 0.04514768719673157,
+    "longest_test": "agent_factory_validation",
+    "shortest_test": "configuration_validation"
+  },
+  "recommendations": [
+    "Verify Flask server is running and accessible",
+    "Check agent factory dependencies and configurations",
+    "Verify Flask routes are properly registered",
+    "Check enhanced agent endpoint implementations",
+    "Verify agent execution logic and dependencies",
+    "Review system performance and optimize slow components",
+    "Check concurrency handling and thread safety"
+  ]
+}

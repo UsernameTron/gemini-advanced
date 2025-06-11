@@ -115,8 +115,8 @@ class UnifiedWebInterface:
     def create_app(self, config_name: Optional[str] = None) -> Flask:
         """Create and configure the unified Flask application."""
         self.app = Flask(__name__, 
-                        template_folder='/Users/cpconnor/projects/Meld and RAG/VectorDBRAG/templates',
-                        static_folder='/Users/cpconnor/projects/Meld and RAG/VectorDBRAG/static')
+                        template_folder='/Users/cpconnor/projects/UnifiedAIPlatform/VectorDBRAG/templates',
+                        static_folder='/Users/cpconnor/projects/UnifiedAIPlatform/VectorDBRAG/static')
         
         # Load configuration
         if config_name is None:
@@ -535,6 +535,8 @@ def create_unified_app(config_name: Optional[str] = None) -> Flask:
     return interface.create_app(config_name)
 
 
+# Create app instance for imports and testing
+app = create_unified_app()
+
 if __name__ == '__main__':
-    app = create_unified_app()
     app.run(debug=True, host='0.0.0.0', port=5000)
