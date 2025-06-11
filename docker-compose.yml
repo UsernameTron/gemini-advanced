@@ -1,8 +1,6 @@
 # Docker Compose for Unified Meld & RAG System
 # Orchestrates the web application with Redis for session management
 
-version: '3.8'
-
 services:
   # Redis for session management and caching
   redis:
@@ -11,14 +9,19 @@ services:
     restart: unless-stopped
     ports:
       - "6379:6379"
-    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    command: >
+      sh -c "if [ ! -z \"$${REDIS_PASSWORD}\" ]; then
+        redis-server --requirepass \"$${REDIS_PASSWORD}\" --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru --protected-mode no --bind 0.0.0.0;
+      else
+        redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru --protected-mode no --bind 0.0.0.0;
+      fi"
     volumes:
       - redis_data:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+      interval: 5s
+      timeout: 3s
+      retries: 5
       start_period: 10s
     networks:
       - meldrag-network
@@ -36,12 +39,14 @@ services:
       # Flask configuration
       - FLASK_ENV=production
       - FLASK_DEBUG=false
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
       
       # OpenAI API configuration (required)
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       
       # Redis configuration
-      - REDIS_URL=redis://redis:6379/0
+      - REDIS_URL=redis://:${REDIS_PASSWORD:-}@redis:6379/0
+      - REDIS_PASSWORD=${REDIS_PASSWORD:-}
       - SESSION_TYPE=redis
       
       # ChromaDB configuration
@@ -69,7 +74,7 @@ services:
       redis:
         condition: service_healthy
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      test: ["CMD", "/app/health-check.sh"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -93,6 +98,7 @@ services:
       # Development configuration
       - FLASK_ENV=development
       - FLASK_DEBUG=true
+      - FLASK_SECRET_KEY=${FLASK_SECRET_KEY}
       
       # OpenAI API configuration
       - OPENAI_API_KEY=${OPENAI_API_KEY}

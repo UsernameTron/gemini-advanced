@@ -244,6 +244,30 @@ shell() {
     docker-compose $DOCKER_COMPOSE_FILES exec "$service" /bin/bash
 }
 
+# Deploy to staging
+deploy_staging() {
+    log "Deploying to staging..."
+    local tag="staging-$(date +%Y%m%d_%H%M%S)"
+    docker-compose $DOCKER_COMPOSE_FILES build --build-arg TARGET=production
+    docker tag meldrag-app:latest myregistry.example.com/meldrag-app:$tag
+    log "Pushing image to registry (placeholder)..."
+    # docker push myregistry.example.com/meldrag-app:$tag
+    success "Staging image built and (optionally) pushed as $tag"
+    # Placeholder: Add remote deployment steps here
+}
+
+# Deploy to production
+deploy_production() {
+    log "Deploying to production..."
+    local tag="prod-$(date +%Y%m%d_%H%M%S)"
+    docker-compose $DOCKER_COMPOSE_FILES build --build-arg TARGET=production
+    docker tag meldrag-app:latest myregistry.example.com/meldrag-app:$tag
+    log "Pushing image to registry (placeholder)..."
+    # docker push myregistry.example.com/meldrag-app:$tag
+    success "Production image built and (optionally) pushed as $tag"
+    # Placeholder: Add remote deployment steps here
+}
+
 # Show help
 show_help() {
     cat << EOF
@@ -263,6 +287,8 @@ Commands:
     backup                 Backup all volumes
     restore [path]         Restore from backup
     shell [service]        Open shell in container (default: app)
+    deploy-staging           Build and (optionally) push image for staging deployment
+    deploy-production        Build and (optionally) push image for production deployment
     help                   Show this help message
 
 Examples:
@@ -315,6 +341,12 @@ main() {
             ;;
         "shell")
             shell "$2"
+            ;;
+        "deploy-staging")
+            deploy_staging
+            ;;
+        "deploy-production")
+            deploy_production
             ;;
         "help"|"--help"|"-h")
             show_help

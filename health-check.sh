@@ -8,8 +8,14 @@ set -e
 HEALTH_CHECK_TIMEOUT=10
 REDIS_HOST=${REDIS_HOST:-"redis"}
 REDIS_PORT=${REDIS_PORT:-6379}
-FLASK_HOST=${FLASK_HOST:-"localhost"}
-FLASK_PORT=${FLASK_PORT:-5000}
+REDIS_PASSWORD=${REDIS_PASSWORD:-}
+FLASK_HOST=${FLASK_HOST:-"127.0.0.1"}
+FLASK_PORT=${FLASK_PORT:-5001}
+# Do NOT set a default for FLASK_SECRET_KEY; fail if not set
+if [ -z "$FLASK_SECRET_KEY" ]; then
+    echo -e "${RED}[FAIL]${NC} FLASK_SECRET_KEY is not set. Exiting health check."
+    exit 1
+fi
 
 # Colors for output
 RED='\033[0;31m'
@@ -41,40 +47,49 @@ failure() {
 warning() {
     echo -e "${YELLOW}[WARN]${NC} $1"
     HEALTH_RESULTS+=("⚠ $1")
-}
-
-# Check if running in container
+}    # Check if running in container
 is_container() {
     [ -f /.dockerenv ] || grep -q 'docker\|lxc' /proc/1/cgroup 2>/dev/null
+}
+
+# Make sure health check script is executable
+check_health_script() {
+    if [ -f "/app/health-check.sh" ]; then
+        chmod +x /app/health-check.sh
+        success "Health check script is available"
+        return 0
+    else
+        failure "Health check script not found"
+        return 1
+    fi
 }
 
 # Check Redis connectivity and health
 check_redis() {
     log "Checking Redis connectivity..."
-    
+    local redis_cli_cmd=(redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT")
+    if [ -n "$REDIS_PASSWORD" ]; then
+        redis_cli_cmd+=( -a "$REDIS_PASSWORD" )
+    fi
     # Try to ping Redis
     if command -v redis-cli >/dev/null 2>&1; then
-        if timeout $HEALTH_CHECK_TIMEOUT redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT" ping | grep -q "PONG"; then
+        if timeout $HEALTH_CHECK_TIMEOUT "${redis_cli_cmd[@]}" ping | grep -q "PONG"; then
             success "Redis is responding to ping"
-            
             # Check Redis info
-            local redis_info=$(timeout $HEALTH_CHECK_TIMEOUT redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT" info server | grep "redis_version")
+            local redis_info=$(timeout $HEALTH_CHECK_TIMEOUT "${redis_cli_cmd[@]}" info server | grep "redis_version")
             if [ -n "$redis_info" ]; then
                 success "Redis version: $(echo $redis_info | cut -d: -f2)"
             fi
-            
             # Check memory usage
-            local memory_info=$(timeout $HEALTH_CHECK_TIMEOUT redis-cli -h "$REDIS_HOST" -p "$REDIS_PORT" info memory | grep "used_memory_human")
+            local memory_info=$(timeout $HEALTH_CHECK_TIMEOUT "${redis_cli_cmd[@]}" info memory | grep "used_memory_human")
             if [ -n "$memory_info" ]; then
                 success "Redis memory usage: $(echo $memory_info | cut -d: -f2)"
             fi
-            
         else
             failure "Redis is not responding to ping"
         fi
     else
         warning "redis-cli not available, skipping detailed Redis checks"
-        
         # Try basic network connectivity
         if timeout $HEALTH_CHECK_TIMEOUT nc -z "$REDIS_HOST" "$REDIS_PORT" 2>/dev/null; then
             success "Redis port $REDIS_PORT is accessible"
@@ -197,6 +212,10 @@ check_environment() {
     )
     
     for var in "${required_vars[@]}"; do
+        if [ "$var" = "FLASK_SECRET_KEY" ] && [ -z "${!var}" ]; then
+            failure "Missing required environment variable: FLASK_SECRET_KEY"
+            continue
+        fi
         if [ -n "${!var}" ]; then
             success "Environment variable set: $var"
         else

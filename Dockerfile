@@ -60,12 +60,33 @@ RUN mkdir -p /app/chroma_db \
 # Set Python path for imports
 ENV PYTHONPATH="/app:/app/VectorDBRAG:/app/agent_system:/app/shared_agents"
 
+# Install networking and health check tools in application stage (for all images)
+USER root
+RUN apt-get update && apt-get install -y redis-tools ca-certificates netcat-openbsd curl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+USER app
+
+# Create required directories for tests with proper permissions
+RUN mkdir -p /app/data/test /app/data/backup_test /app/data/chromadb \
+    && chown -R app:app /app/data /app/logs /app/chroma_db /app/flask_session
+USER app
+
+# Create health check script
+USER root
+COPY --chown=app:app health-check.sh /app/health-check.sh
+RUN chmod +x /app/health-check.sh
+USER app
+
 # Stage 4: Production image
 FROM application as production
 
 # Install gunicorn for production server
 USER root
-RUN pip install --no-cache-dir gunicorn[gevent]
+RUN pip install --no-cache-dir gunicorn[gevent] && \
+    apt-get update && \
+    apt-get install -y redis-tools ca-certificates netcat-openbsd && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 USER app
 
 # Create startup script
@@ -75,10 +96,54 @@ set -e\n\
 # Wait for Redis if configured\n\
 if [ "$REDIS_URL" ]; then\n\
     echo "Waiting for Redis..."\n\
-    while ! nc -z redis 6379; do\n\
+    timeout=30\n\
+    while ! nc -z redis 6379 && [ $timeout -gt 0 ]; do\n\
         sleep 1\n\
+        timeout=$((timeout-1))\n\
     done\n\
-    echo "Redis is ready!"\n\
+    if [ $timeout -eq 0 ]; then\n\
+        echo "Warning: Redis connection timed out after 30 seconds"\n\
+    else\n\
+        echo "Redis is reachable!"\n\
+    \n\
+    # Test Redis connection with password if provided\n\
+    if [ "$REDIS_PASSWORD" ]; then\n\
+        # Multiple attempts for Redis connection with password\n\
+        retry_count=0\n\
+        max_retries=5\n\
+        while [ $retry_count -lt $max_retries ]; do\n\
+            if redis-cli -h redis -a "$REDIS_PASSWORD" ping > /dev/null 2>&1; then\n\
+                echo "Redis authentication successful!"\n\
+                break\n\
+            else\n\
+                retry_count=$((retry_count+1))\n\
+                if [ $retry_count -eq $max_retries ]; then\n\
+                    echo "Warning: Redis auth failed after $max_retries attempts, check REDIS_PASSWORD"\n\
+                else\n\
+                    echo "Retrying Redis connection ($retry_count/$max_retries)..."\n\
+                    sleep 2\n\
+                fi\n\
+            fi\n\
+        done\n\
+    else\n\
+        # Multiple attempts for Redis connection without password\n\
+        retry_count=0\n\
+        max_retries=5\n\
+        while [ $retry_count -lt $max_retries ]; do\n\
+            if redis-cli -h redis ping > /dev/null 2>&1; then\n\
+                echo "Redis ping successful!"\n\
+                break\n\
+            else\n\
+                retry_count=$((retry_count+1))\n\
+                if [ $retry_count -eq $max_retries ]; then\n\
+                    echo "Warning: Redis ping failed after $max_retries attempts"\n\
+                else\n\
+                    echo "Retrying Redis connection ($retry_count/$max_retries)..."\n\
+                    sleep 2\n\
+                fi\n\
+            fi\n\
+        done\n\
+    fi\n\
 fi\n\
 \n\
 # Initialize ChromaDB directory\n\
@@ -107,7 +172,7 @@ fi\n\
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-    CMD curl -f http://localhost:5001/health || exit 1
+    CMD /app/health-check.sh || exit 1
 
 # Expose port
 EXPOSE 5001
