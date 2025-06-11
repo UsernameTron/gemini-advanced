@@ -2,7 +2,8 @@
 # Health Check Script for Meld & RAG System
 # This script performs comprehensive health checks on all system components
 
-set -e
+# Remove 'set -e' to allow all health checks to run and report
+# set -e
 
 # Configuration
 HEALTH_CHECK_TIMEOUT=10
@@ -323,6 +324,7 @@ generate_report() {
     done
     
     echo
+    echo "[DEBUG] OVERALL_HEALTH is: $OVERALL_HEALTH"
     if [ "$OVERALL_HEALTH" = true ]; then
         echo -e "${GREEN}Overall Status: HEALTHY${NC}"
         exit 0
