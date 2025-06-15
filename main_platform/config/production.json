@@ -1,0 +1,29 @@
+{
+  "image_generation": {
+    "model": "dall-e-3",
+    "size": "1536x1024",
+    "quality": "hd",
+    "style": "vivid",
+    "max_retries": 3,
+    "timeout": 120,
+    "cost_per_image": 0.080
+  },
+  "agents": {
+    "default_model": "gpt-4",
+    "max_concurrent_agents": 5,
+    "agent_timeout": 300,
+    "retry_attempts": 3
+  },
+  "security": {
+    "rate_limit_per_minute": 60,
+    "max_requests_per_hour": 1000,
+    "enable_request_logging": true,
+    "cors_origins": ["https://yourdomain.com", "https://api.yourdomain.com"]
+  },
+  "database": {
+    "database_url": "postgresql://user:password@localhost:5432/brand_platform",
+    "enable_analytics": true,
+    "retention_days": 90,
+    "backup_enabled": true
+  }
+}

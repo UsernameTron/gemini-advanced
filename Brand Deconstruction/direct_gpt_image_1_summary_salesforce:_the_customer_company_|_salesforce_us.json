@@ -1,0 +1,38 @@
+{
+  "pipeline_type": "direct_gpt_image_1",
+  "brand_analysis": {
+    "brand_name": "Salesforce: The Customer Company | Salesforce US",
+    "authenticity_score": 0.99,
+    "satirical_vulnerabilities": []
+  },
+  "generation_results": {
+    "images_generated": 3,
+    "successful_generations": 0,
+    "total_processing_time": 3.2015140056610107,
+    "image_generation_time": 0
+  },
+  "generated_images": [
+    {
+      "image_id": 1,
+      "success": false,
+      "specs": null,
+      "generation_time": 0.245246,
+      "error": "gpt-image-1 error: Error code: 403 - {'error': {'message': 'Your organization must be verified to use the model `gpt-image-1`. Please go to: https://platform.openai.com/settings/organization/general and click on Verify Organization. If you just verified, it can take up to 15 minutes for access to propagate.', 'type': 'invalid_request_error', 'param': None, 'code': None}}"
+    },
+    {
+      "image_id": 2,
+      "success": false,
+      "specs": null,
+      "generation_time": 0.175886,
+      "error": "gpt-image-1 error: Error code: 403 - {'error': {'message': 'Your organization must be verified to use the model `gpt-image-1`. Please go to: https://platform.openai.com/settings/organization/general and click on Verify Organization. If you just verified, it can take up to 15 minutes for access to propagate.', 'type': 'invalid_request_error', 'param': None, 'code': None}}"
+    },
+    {
+      "image_id": 3,
+      "success": false,
+      "specs": null,
+      "generation_time": 0.110887,
+      "error": "gpt-image-1 error: Error code: 403 - {'error': {'message': 'Your organization must be verified to use the model `gpt-image-1`. Please go to: https://platform.openai.com/settings/organization/general and click on Verify Organization. If you just verified, it can take up to 15 minutes for access to propagate.', 'type': 'invalid_request_error', 'param': None, 'code': None}}"
+    }
+  ],
+  "saved_files": []
+}

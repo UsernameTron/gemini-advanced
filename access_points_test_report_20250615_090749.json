@@ -1,0 +1,319 @@
+{
+  "test_timestamp": "2025-06-15T09:07:49.904847",
+  "base_url": "http://localhost:5001",
+  "endpoints_tested": [
+    {
+      "endpoint": "/",
+      "method": "GET",
+      "description": "Main Dashboard",
+      "status_code": 500,
+      "response_time_ms": 8.29,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 34,
+      "timestamp": "2025-06-15T09:07:49.913161",
+      "response_data": {
+        "error": "Internal server error"
+      }
+    },
+    {
+      "endpoint": "/api/status",
+      "method": "GET",
+      "description": "API Status",
+      "status_code": 200,
+      "response_time_ms": 1.91,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 188,
+      "timestamp": "2025-06-15T09:07:49.915113",
+      "response_data": {
+        "platform_name": "Unified AI Platform",
+        "status": "operational",
+        "systems_available": 4,
+        "timestamp": "2025-06-15T09:07:49.914786",
+        "total_systems": 4,
+        "uptime": "0:00:49.914781",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "endpoint": "/api/unified/status",
+      "method": "GET",
+      "description": "Functional Status",
+      "status_code": 200,
+      "response_time_ms": 1.85,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 293,
+      "timestamp": "2025-06-15T09:07:49.917004",
+      "response_data": {
+        "capabilities": [
+          "template_system",
+          "agent_framework",
+          "persona_management"
+        ],
+        "functional_integrations": {
+          "agent_system": "unavailable",
+          "brand_system": "unavailable",
+          "mindmeld_system": "available",
+          "rag_system": "unavailable"
+        },
+        "platform": "Unified AI Platform",
+        "timestamp": "2025-06-15T09:07:49.916636"
+      }
+    },
+    {
+      "endpoint": "/api/mindmeld/agents",
+      "method": "GET",
+      "description": "MindMeld Agents",
+      "status_code": 200,
+      "response_time_ms": 1.49,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 134,
+      "timestamp": "2025-06-15T09:07:49.918540",
+      "response_data": {
+        "agents": [
+          "analyst",
+          "creative",
+          "technical"
+        ],
+        "framework_version": "1.1",
+        "status": "available",
+        "timestamp": "2025-06-15T09:07:49.918197"
+      }
+    },
+    {
+      "endpoint": "/api/systems",
+      "method": "GET",
+      "description": "Systems Information",
+      "status_code": 200,
+      "response_time_ms": 1.82,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 417,
+      "timestamp": "2025-06-15T09:07:49.920397",
+      "response_data": {
+        "agent_system": {
+          "components": [
+            "web_interface",
+            "analytics"
+          ],
+          "status": "available"
+        },
+        "brand_system": {
+          "components": [
+            "satirical_analysis",
+            "dalle_generation"
+          ],
+          "status": "available"
+        },
+        "mindmeld_framework": {
+          "agents": 12,
+          "status": "available"
+        },
+        "rag_system": {
+          "components": [
+            "document_processing",
+            "vector_search",
+            "knowledge_base",
+            "vector_embeddings",
+            "enhanced_search"
+          ],
+          "status": "available"
+        },
+        "timestamp": "2025-06-15T09:07:49.920069"
+      }
+    },
+    {
+      "endpoint": "/functional",
+      "method": "GET",
+      "description": "Functional Dashboard",
+      "status_code": 500,
+      "response_time_ms": 3.0,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 34,
+      "timestamp": "2025-06-15T09:07:49.923431",
+      "response_data": {
+        "error": "Internal server error"
+      }
+    },
+    {
+      "endpoint": "/api/test",
+      "method": "GET",
+      "description": "Test Endpoint",
+      "status_code": 200,
+      "response_time_ms": 1.6,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 127,
+      "timestamp": "2025-06-15T09:07:49.937064",
+      "response_data": {
+        "message": "Unified AI Platform API is working",
+        "status": "success",
+        "timestamp": "2025-06-15T09:07:49.936704",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "endpoint": "/api/functional/status",
+      "method": "GET",
+      "description": "Functional Integration Status",
+      "status_code": 200,
+      "response_time_ms": 1.43,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 146,
+      "timestamp": "2025-06-15T09:07:49.938532",
+      "response_data": {
+        "functional_systems": {
+          "agents": false,
+          "brand": false,
+          "mindmeld": true,
+          "rag": false
+        },
+        "timestamp": "2025-06-15T09:07:49.938292",
+        "total_capabilities": 3
+      }
+    },
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "description": "Health Check",
+      "status_code": 404,
+      "response_time_ms": 1.53,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 31,
+      "timestamp": "2025-06-15T09:07:49.940089",
+      "response_data": {
+        "error": "Endpoint not found"
+      }
+    },
+    {
+      "endpoint": "/api/health",
+      "method": "GET",
+      "description": "API Health Check",
+      "status_code": 404,
+      "response_time_ms": 1.21,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 31,
+      "timestamp": "2025-06-15T09:07:49.941334",
+      "response_data": {
+        "error": "Endpoint not found"
+      }
+    }
+  ],
+  "functional_tests": [
+    {
+      "endpoint": "/api/brand/analyze",
+      "method": "POST",
+      "description": "Brand Analysis",
+      "status_code": 503,
+      "response_time_ms": 1.83,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 39,
+      "timestamp": "2025-06-15T09:07:49.925301",
+      "response_data": {
+        "error": "Brand system not available"
+      }
+    },
+    {
+      "endpoint": "/api/brand/generate-image",
+      "method": "POST",
+      "description": "Image Generation",
+      "status_code": 503,
+      "response_time_ms": 1.4,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 39,
+      "timestamp": "2025-06-15T09:07:49.926740",
+      "response_data": {
+        "error": "Brand system not available"
+      }
+    },
+    {
+      "endpoint": "/api/rag/chat",
+      "method": "POST",
+      "description": "RAG Chat",
+      "status_code": 503,
+      "response_time_ms": 1.7,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 37,
+      "timestamp": "2025-06-15T09:07:49.928481",
+      "response_data": {
+        "error": "RAG system not available"
+      }
+    },
+    {
+      "endpoint": "/api/rag/upload",
+      "method": "POST",
+      "description": "Document Upload (empty)",
+      "status_code": 503,
+      "response_time_ms": 1.66,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 37,
+      "timestamp": "2025-06-15T09:07:49.930185",
+      "response_data": {
+        "error": "RAG system not available"
+      }
+    },
+    {
+      "endpoint": "/api/agents/chat",
+      "method": "POST",
+      "description": "Agent Chat",
+      "status_code": 503,
+      "response_time_ms": 2.0,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 39,
+      "timestamp": "2025-06-15T09:07:49.932219",
+      "response_data": {
+        "error": "Agent system not available"
+      }
+    },
+    {
+      "endpoint": "/api/agents/workflow",
+      "method": "POST",
+      "description": "Agent Workflow",
+      "status_code": 503,
+      "response_time_ms": 1.77,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 39,
+      "timestamp": "2025-06-15T09:07:49.934023",
+      "response_data": {
+        "error": "Agent system not available"
+      }
+    },
+    {
+      "endpoint": "/api/unified/capabilities",
+      "method": "GET",
+      "description": "System Capabilities",
+      "status_code": 200,
+      "response_time_ms": 1.37,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 59,
+      "timestamp": "2025-06-15T09:07:49.935420",
+      "response_data": [
+        "template_system",
+        "agent_framework",
+        "persona_management"
+      ]
+    }
+  ],
+  "summary": {
+    "total_tests": 17,
+    "successful_tests": 7,
+    "failed_tests": 10,
+    "success_rate": 41.2,
+    "average_response_time_ms": 2.11,
+    "platform_status": "degraded"
+  }
+}

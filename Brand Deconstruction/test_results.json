@@ -1,0 +1,176 @@
+{
+  "success": true,
+  "total_time": 8.218177080154419,
+  "results": {
+    "Scraping System Tests": [
+      {
+        "name": "Known Brand Scraping",
+        "passed": true,
+        "execution_time": 1.2860591411590576,
+        "result": {
+          "brand_detected": "Salesforce: The Customer Company | Salesforce US"
+        }
+      },
+      {
+        "name": "Fallback Strategy",
+        "passed": true,
+        "execution_time": 0.04453611373901367,
+        "result": {
+          "fallback_method": "generic_analysis"
+        }
+      },
+      {
+        "name": "Invalid URL Handling",
+        "passed": true,
+        "execution_time": 0.0001239776611328125,
+        "result": {
+          "handled_gracefully": true
+        }
+      },
+      {
+        "name": "Rate Limiting Resilience",
+        "passed": true,
+        "execution_time": 9.5367431640625e-07,
+        "result": {
+          "rate_limiting_handled": true
+        }
+      }
+    ],
+    "Brand Analysis Tests": [
+      {
+        "name": "Authenticity Score Calculation",
+        "passed": true,
+        "execution_time": 2.384185791015625e-05,
+        "result": {
+          "authenticity_score": 0.5000000000000001
+        }
+      },
+      {
+        "name": "Vulnerability Detection",
+        "passed": true,
+        "execution_time": 1.6927719116210938e-05,
+        "result": {
+          "vulnerabilities_detected": 3
+        }
+      },
+      {
+        "name": "Content Structure Analysis",
+        "passed": true,
+        "execution_time": 0.0,
+        "result": {
+          "content_categories_detected": 3
+        }
+      }
+    ],
+    "Image Generation Tests": [
+      {
+        "name": "Basic Image Generation",
+        "passed": false,
+        "execution_time": 0.10980916023254395,
+        "error": ""
+      },
+      {
+        "name": "Prompt Enhancement",
+        "passed": true,
+        "execution_time": 9.059906005859375e-06,
+        "result": {
+          "enhanced_prompt_length": 169
+        }
+      },
+      {
+        "name": "Invalid Request Handling",
+        "passed": true,
+        "execution_time": 0.230180025100708,
+        "result": {
+          "error_handled": true
+        }
+      }
+    ],
+    "Integration Tests": [
+      {
+        "name": "End-to-End Pipeline",
+        "passed": true,
+        "execution_time": 0.8126671314239502,
+        "result": {
+          "pipeline_completed": true
+        }
+      },
+      {
+        "name": "Agent Integration",
+        "passed": true,
+        "execution_time": 0.0,
+        "result": {
+          "agents_available": false
+        }
+      }
+    ],
+    "Performance Tests": [
+      {
+        "name": "Response Time Benchmarks",
+        "passed": true,
+        "execution_time": 0.7288048267364502,
+        "result": {
+          "response_time": 0.7287960052490234
+        }
+      },
+      {
+        "name": "Memory Usage Monitoring",
+        "passed": true,
+        "execution_time": 0.0,
+        "result": {
+          "memory_monitoring": "implemented"
+        }
+      },
+      {
+        "name": "Concurrent Request Handling",
+        "passed": true,
+        "execution_time": 0.0,
+        "result": {
+          "concurrent_handling": "tested"
+        }
+      }
+    ],
+    "Agent Enhancement Tests": [
+      {
+        "name": "Agent Enhancement Tests",
+        "passed": false,
+        "reason": "Agents not available"
+      }
+    ],
+    "Error Handling Tests": [
+      {
+        "name": "Network Failure Handling",
+        "passed": true,
+        "execution_time": 5.0053770542144775,
+        "result": {
+          "network_failure_handled": true
+        }
+      },
+      {
+        "name": "API Key Validation",
+        "passed": true,
+        "execution_time": 0.00013303756713867188,
+        "result": {
+          "api_key_validation": "implemented"
+        }
+      },
+      {
+        "name": "Malformed Input Handling",
+        "passed": true,
+        "execution_time": 9.584426879882812e-05,
+        "result": {
+          "malformed_input_handled": true
+        }
+      }
+    ]
+  },
+  "overall_stats": {
+    "total": 19,
+    "passed": 17,
+    "success_rate": 0.8947368421052632,
+    "agent_enhanced": 1
+  },
+  "performance_metrics": {
+    "scraping_time": 0.7287960052490234
+  }
+}

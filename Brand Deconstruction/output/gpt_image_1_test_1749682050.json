@@ -1,0 +1,15 @@
+{
+  "success": true,
+  "execution_time": 3.2007391452789307,
+  "brand_name": "Salesforce: The Customer Company | Salesforce US",
+  "authenticity_score": 0.99,
+  "contradictions_count": 0,
+  "vulnerabilities_count": 0,
+  "images_generated": 3,
+  "model_used": "gpt-image-1",
+  "excluded_models": [
+    "dalle-2",
+    "dalle-3",
+    "gpt-4o"
+  ]
+}

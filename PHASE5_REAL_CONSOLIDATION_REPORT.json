@@ -1,0 +1,84 @@
+{
+  "consolidation_summary": {
+    "start_time": "2025-06-13T16:15:24.676713",
+    "end_time": "2025-06-13T16:15:24.691071",
+    "duration_seconds": 0.014358,
+    "success_rate": 100.0,
+    "platforms_consolidated": 6,
+    "total_platforms": 6
+  },
+  "platform_results": {
+    "brand_platform": {
+      "status": "SUCCESS",
+      "files_migrated": 4,
+      "target_location": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/brand_components"
+    },
+    "rag_system": {
+      "status": "SUCCESS",
+      "files_migrated": 5,
+      "target_location": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/rag_components"
+    },
+    "vector_rag": {
+      "status": "SUCCESS",
+      "files_migrated": 4,
+      "target_location": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/rag_components"
+    },
+    "agent_system": {
+      "status": "SUCCESS",
+      "files_migrated": 2,
+      "target_location": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/agent_system_consolidated"
+    },
+    "unified_interface": {
+      "status": "SUCCESS",
+      "location": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/unified_platform.py"
+    },
+    "deployment_scripts": {
+      "status": "SUCCESS",
+      "startup_script": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/start_unified_platform.sh",
+      "requirements": "/Users/cpconnor/projects/UnifiedAIPlatform/MindMeld-v1.1/requirements_unified.txt"
+    },
+    "validation": {
+      "brand_components": {
+        "exists": true,
+        "files_count": 15
+      },
+      "rag_components": {
+        "exists": true,
+        "files_count": 32
+      },
+      "agent_system_consolidated": {
+        "exists": true,
+        "files_count": 2
+      },
+      "unified_interface": true,
+      "startup_script": true
+    }
+  },
+  "migration_log": [
+    "[16:15:24] INFO: Starting Brand Platform consolidation...",
+    "[16:15:24] INFO: Migrated: app.py",
+    "[16:15:24] INFO: Migrated: config/",
+    "[16:15:24] INFO: Migrated: utils/",
+    "[16:15:24] INFO: Starting RAG systems consolidation...",
+    "[16:15:24] INFO: Migrated RAG: agents.py",
+    "[16:15:24] INFO: Migrated RAG: unified_agent_system.py",
+    "[16:15:24] INFO: Migrated RAG: rag_system.py",
+    "[16:15:24] INFO: Migrated RAG: agent_flask_integration.py",
+    "[16:15:24] INFO: Migrated RAG: requirements.txt",
+    "[16:15:24] INFO: Migrated VectorRAG: enhanced_agent_integration.py",
+    "[16:15:24] INFO: Migrated VectorRAG: app.py",
+    "[16:15:24] INFO: Migrated VectorRAG: agents/",
+    "[16:15:24] INFO: Migrated VectorRAG: templates/",
+    "[16:15:24] INFO: Starting Agent System consolidation...",
+    "[16:15:24] INFO: Migrated Agent System: web_interface.py",
+    "[16:15:24] INFO: Migrated Agent System: analytics_dashboard.py",
+    "[16:15:24] INFO: Creating unified interface...",
+    "[16:15:24] INFO: Created unified platform interface",
+    "[16:15:24] INFO: Creating deployment scripts...",
+    "[16:15:24] INFO: Created deployment scripts",
+    "[16:15:24] INFO: Validating consolidation...",
+    "[16:15:24] INFO: Validation complete: 100.0% success rate",
+    "[16:15:24] INFO: Generating consolidation report..."
+  ],
+  "final_status": "SUCCESS"
+}

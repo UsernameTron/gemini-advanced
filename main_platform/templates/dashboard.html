@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/visual-components.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.4/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body class="dark-theme">
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1 class="platform-title">🎯 Brand Deconstruction Platform</h1>
+                <span class="version-badge">v1.0</span>
+            </div>
+            
+            <div class="nav-tabs">
+                <button class="tab-button active" data-tab="brand-analysis">
+                    <span class="tab-icon">🎯</span>
+                    Brand Analysis
+                </button>
+                <button class="tab-button" data-tab="image-generation">
+                    <span class="tab-icon">🎨</span>
+                    Image Generation
+                </button>
+                <button class="tab-button" data-tab="agent-console">
+                    <span class="tab-icon">🤖</span>
+                    Agent Console
+                </button>
+                <button class="tab-button" data-tab="campaign-manager">
+                    <span class="tab-icon">📊</span>
+                    Campaign Manager
+                </button>
+                <button class="tab-button" data-tab="workflow-builder">
+                    <span class="tab-icon">🔧</span>
+                    Workflow Builder
+                </button>
+                <button class="tab-button" data-tab="analytics-dashboard">
+                    <span class="tab-icon">📈</span>
+                    Analytics
+                </button>
+            </div>
+            
+            <div class="nav-status">
+                <div class="agent-status-indicator" id="agentStatus">
+                    <span class="status-dot {% if agents_available %}active{% else %}inactive{% endif %}"></span>
+                    <span class="status-text">
+                        {% if agents_available %}Agents Ready{% else %}Agents Unavailable{% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Brand Analysis Tab -->
+        <section id="brand-analysis" class="tab-content active">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Brand Deconstruction Analysis</h2>
+                    <p class="section-description">
+                        Comprehensive brand vulnerability analysis using advanced AI agents
+                    </p>
+                    {% if not brand_agents_available %}
+                    <div class="warning-banner">
+                        ⚠️ Brand agents not fully available. Some features may be limited.
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="analysis-form">
+                    <div class="form-group">
+                        <label for="brandName">Target Brand</label>
+                        <input 
+                            type="text" 
+                            id="brandName" 
+                            placeholder="Enter brand name (e.g., Apple, Tesla, McKinsey)"
+                            class="form-input"
+                        >
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="analysisDepth">Analysis Depth</label>
+                            <select id="analysisDepth" class="form-select">
+                                <option value="comprehensive">Comprehensive</option>
+                                <option value="standard">Standard</option>
+                                <option value="quick">Quick</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Analysis Vectors</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="positioning" checked>
+                                    <span class="checkmark"></span>
+                                    Positioning
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="performance" checked>
+                                    <span class="checkmark"></span>
+                                    Performance
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" value="technical" checked>
+                                    <span class="checkmark"></span>
+                                    Technical
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button id="startAnalysis" class="primary-button" {% if not brand_agents_available %}disabled{% endif %}>
+                        <span class="button-icon">🚀</span>
+                        Start Analysis
+                    </button>
+                </div>
+                
+                <div id="analysisResults" class="results-container" style="display: none;">
+                    <div class="results-header">
+                        <h3>Analysis Results</h3>
+                        <div class="results-actions">
+                            <button class="secondary-button" id="exportResults">Export</button>
+                            <button class="primary-button" id="generateImages">Generate Images</button>
+                        </div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h4>Brand Intelligence</h4>
+                            <div id="intelligenceData" class="result-content"></div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h4>Vulnerability Analysis</h4>
+                            <div id="vulnerabilityData" class="result-content"></div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h4>Satirical Concepts</h4>
+                            <div id="satiricalConcepts" class="result-content"></div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h4>Campaign Strategy</h4>
+                            <div id="campaignStrategy" class="result-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Image Generation Tab -->
+        <section id="image-generation" class="tab-content">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>High-Quality Image Generation</h2>
+                    <p class="section-description">
+                        Create professional satirical images using GPT-Image-1
+                    </p>
+                </div>
+                
+                <div class="image-generation-workflow">
+                    <div class="workflow-step active" id="conceptStep">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h3>Review Satirical Concepts</h3>
+                        </div>
+                        
+                        <div id="conceptPreviews" class="concept-grid">
+                            <div class="concept-placeholder">
+                                <p>Complete brand analysis first to generate concepts</p>
+                                <button class="secondary-button" onclick="switchToTab('brand-analysis')">
+                                    Go to Brand Analysis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-step" id="imageStep">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h3>Generate High-Quality Image</h3>
+                        </div>
+                        
+                        <div class="image-generation-panel">
+                            <div class="form-group">
+                                <label for="imagePrompt">Enhanced Prompt</label>
+                                <textarea 
+                                    id="imagePrompt" 
+                                    class="form-textarea" 
+                                    placeholder="Describe the satirical image you want to generate..."
+                                    rows="4"
+                                ></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="brandContext">Brand Context</label>
+                                <input 
+                                    type="text" 
+                                    id="brandContext" 
+                                    class="form-input" 
+                                    placeholder="Brand name for context"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="satiricalIntensity">Satirical Intensity</label>
+                                <input 
+                                    type="range" 
+                                    id="satiricalIntensity" 
+                                    class="form-range" 
+                                    min="0.1" 
+                                    max="1.0" 
+                                    step="0.1" 
+                                    value="0.7"
+                                >
+                                <span id="intensityValue" class="range-value">0.7</span>
+                            </div>
+                            
+                            <div class="generation-controls">
+                                <button id="generateImage" class="primary-button" {% if not brand_agents_available %}disabled{% endif %}>
+                                    <span class="button-icon">🎨</span>
+                                    Generate Image ($0.08)
+                                </button>
+                            </div>
+                            
+                            <div id="generatedImage" class="image-result" style="display: none;">
+                                <!-- Generated image will appear here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agent Console Tab -->
+        <section id="agent-console" class="tab-content">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Agent Management Console</h2>
+                    <p class="section-description">
+                        Monitor and control AI agents in real-time
+                    </p>
+                </div>
+                
+                <div class="console-grid">
+                    <div class="console-panel">
+                        <h3>Active Agents</h3>
+                        <div id="activeAgents" class="agent-list">
+                            <div class="loading-placeholder">Loading agent data...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="console-panel">
+                        <h3>Agent Capabilities</h3>
+                        <div id="agentCapabilities" class="capability-list">
+                            <div class="loading-placeholder">Loading capabilities...</div>
+                        </div>
+                    </div>
+                    
+                    <div class="console-panel">
+                        <h3>Performance Metrics</h3>
+                        <canvas id="performanceChart" width="400" height="200"></canvas>
+                    </div>
+                    
+                    <div class="console-panel">
+                        <h3>Activity Feed</h3>
+                        <div id="activityFeed" class="activity-feed">
+                            <div class="activity-item">
+                                <span class="activity-time">{{ timestamp }}</span>
+                                <span class="activity-message">Platform initialized</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaign Manager Tab -->
+        <section id="campaign-manager" class="tab-content">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Campaign Management</h2>
+                    <p class="section-description">
+                        Orchestrate complex multi-agent campaigns
+                    </p>
+                </div>
+                
+                <div class="campaign-dashboard">
+                    <div class="campaign-stats">
+                        <div class="stat-card">
+                            <h4>Active Campaigns</h4>
+                            <span class="stat-value" id="activeCampaigns">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h4>Images Generated</h4>
+                            <span class="stat-value" id="imagesGenerated">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h4>Brands Analyzed</h4>
+                            <span class="stat-value" id="brandsAnalyzed">0</span>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <h4>Success Rate</h4>
+                            <span class="stat-value" id="successRate">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="campaign-actions">
+                        <button class="primary-button" id="newCampaign">
+                            <span class="button-icon">➕</span>
+                            New Campaign
+                        </button>
+                        
+                        <button class="secondary-button" id="templateLibrary">
+                            <span class="button-icon">📁</span>
+                            Template Library
+                        </button>
+                        
+                        <button class="secondary-button" id="refreshData">
+                            <span class="button-icon">🔄</span>
+                            Refresh Data
+                        </button>
+                    </div>
+                    
+                    <div id="campaignList" class="campaign-list">
+                        <div class="campaign-placeholder">
+                            <p>No campaigns found. Create your first campaign to get started.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workflow Builder Tab -->
+        <section id="workflow-builder" class="tab-content">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Visual Workflow Builder</h2>
+                    <p class="section-description">
+                        Design custom agent workflows with drag-and-drop interface
+                    </p>
+                </div>
+                
+                <div class="workflow-container">
+                    <div class="workflow-toolbar">
+                        <div class="toolbar-group">
+                            <button class="tool-button" id="newWorkflow">
+                                <span class="button-icon">📄</span>
+                                New Workflow
+                            </button>
+                            <button class="tool-button" id="saveWorkflow">
+                                <span class="button-icon">💾</span>
+                                Save
+                            </button>
+                            <button class="tool-button" id="loadWorkflow">
+                                <span class="button-icon">📁</span>
+                                Load
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-group">
+                            <button class="tool-button" id="runWorkflow">
+                                <span class="button-icon">▶️</span>
+                                Run Workflow
+                            </button>
+                            <button class="tool-button" id="validateWorkflow">
+                                <span class="button-icon">✅</span>
+                                Validate
+                            </button>
+                        </div>
+                        
+                        <div class="toolbar-group">
+                            <select id="workflowTemplate" class="form-select">
+                                <option value="">Select Template</option>
+                                <option value="brand-analysis">Brand Analysis</option>
+                                <option value="image-generation">Image Generation</option>
+                                <option value="campaign-flow">Campaign Flow</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-workspace">
+                        <div class="workflow-sidebar">
+                            <h3>Components</h3>
+                            <div class="component-categories">
+                                <div class="category-section">
+                                    <h4>Agents</h4>
+                                    <div class="component-list" id="agentComponents">
+                                        <div class="component-item" draggable="true" data-type="brand-agent">
+                                            <span class="component-icon">🎯</span>
+                                            <span class="component-name">Brand Agent</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="image-agent">
+                                            <span class="component-icon">🎨</span>
+                                            <span class="component-name">Image Agent</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="analytics-agent">
+                                            <span class="component-icon">📊</span>
+                                            <span class="component-name">Analytics Agent</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="category-section">
+                                    <h4>Logic</h4>
+                                    <div class="component-list" id="logicComponents">
+                                        <div class="component-item" draggable="true" data-type="decision">
+                                            <span class="component-icon">🤔</span>
+                                            <span class="component-name">Decision</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="loop">
+                                            <span class="component-icon">🔄</span>
+                                            <span class="component-name">Loop</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="parallel">
+                                            <span class="component-icon">⚡</span>
+                                            <span class="component-name">Parallel</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="category-section">
+                                    <h4>Data</h4>
+                                    <div class="component-list" id="dataComponents">
+                                        <div class="component-item" draggable="true" data-type="input">
+                                            <span class="component-icon">📥</span>
+                                            <span class="component-name">Input</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="output">
+                                            <span class="component-icon">📤</span>
+                                            <span class="component-name">Output</span>
+                                        </div>
+                                        <div class="component-item" draggable="true" data-type="transform">
+                                            <span class="component-icon">🔧</span>
+                                            <span class="component-name">Transform</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-canvas-container">
+                            <div class="workflow-canvas" id="workflowCanvas">
+                                <div class="canvas-background">
+                                    <div class="canvas-grid"></div>
+                                </div>
+                                <div class="canvas-content" id="canvasContent">
+                                    <!-- Workflow nodes will be dynamically added here -->
+                                </div>
+                                <svg class="connection-layer" id="connectionLayer">
+                                    <!-- Connection lines will be drawn here -->
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="workflow-properties">
+                            <h3>Properties</h3>
+                            <div id="nodeProperties" class="properties-panel">
+                                <div class="properties-placeholder">
+                                    Select a component to view its properties
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="workflow-status">
+                        <div class="status-info">
+                            <span class="status-label">Workflow Status:</span>
+                            <span class="status-value" id="workflowStatus">Ready</span>
+                        </div>
+                        <div class="status-info">
+                            <span class="status-label">Components:</span>
+                            <span class="status-value" id="componentCount">0</span>
+                        </div>
+                        <div class="status-info">
+                            <span class="status-label">Connections:</span>
+                            <span class="status-value" id="connectionCount">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Dashboard Tab -->
+        <section id="analytics-dashboard" class="tab-content">
+            <div class="content-container">
+                <div class="section-header">
+                    <h2>Analytics Dashboard</h2>
+                    <p class="section-description">
+                        Comprehensive platform insights and performance metrics
+                    </p>
+                    <div class="dashboard-status">
+                        <div id="connectionStatus" class="connection-status disconnected">Initializing...</div>
+                    </div>
+                </div>
+                
+                <div class="analytics-container">
+                    <div class="analytics-controls">
+                        <div class="time-range-selector">
+                            <label for="timeRange">Time Range:</label>
+                            <select id="timeRange" class="form-select">
+                                <option value="1h">Last Hour</option>
+                                <option value="24h" selected>Last 24 Hours</option>
+                                <option value="7d">Last 7 Days</option>
+                                <option value="30d">Last 30 Days</option>
+                                <option value="90d">Last 90 Days</option>
+                            </select>
+                        </div>
+                        
+                        <div class="metric-selector">
+                            <label for="metricType">Metric Type:</label>
+                            <select id="metricType" class="form-select">
+                                <option value="all">All Metrics</option>
+                                <option value="performance">Performance</option>
+                                <option value="usage">Usage</option>
+                                <option value="errors">Errors</option>
+                            </select>
+                        </div>
+                        
+                        <button class="secondary-button" id="refreshAnalytics">
+                            <span class="button-icon">🔄</span>
+                            Refresh
+                        </button>
+                        
+                        <button class="secondary-button" id="exportAnalytics">
+                            <span class="button-icon">📊</span>
+                            Export
+                        </button>
+                    </div>
+                    
+                    <div class="analytics-grid">
+                        <div class="analytics-section">
+                            <h3>Key Performance Indicators</h3>
+                            <div class="kpi-grid">
+                                <div class="kpi-card">
+                                    <div class="kpi-icon">🎯</div>
+                                    <div class="kpi-content">
+                                        <div class="kpi-value" id="totalAnalyses">0</div>
+                                        <div class="kpi-label">Total Analyses</div>
+                                        <div class="kpi-change positive" id="analysesChange">+0%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="kpi-card">
+                                    <div class="kpi-icon">🎨</div>
+                                    <div class="kpi-content">
+                                        <div class="kpi-value" id="totalImages">0</div>
+                                        <div class="kpi-label">Images Generated</div>
+                                        <div class="kpi-change positive" id="imagesChange">+0%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="kpi-card">
+                                    <div class="kpi-icon">📊</div>
+                                    <div class="kpi-content">
+                                        <div class="kpi-value" id="totalCampaigns">0</div>
+                                        <div class="kpi-label">Active Campaigns</div>
+                                        <div class="kpi-change positive" id="campaignsChange">+0%</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="kpi-card">
+                                    <div class="kpi-icon">⚡</div>
+                                    <div class="kpi-content">
+                                        <div class="kpi-value" id="avgResponseTime">0ms</div>
+                                        <div class="kpi-label">Avg Response Time</div>
+                                        <div class="kpi-change negative" id="responseTimeChange">+0%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>Usage Trends</h3>
+                            <div class="chart-container">
+                                <canvas id="usageTrendsChart" width="800" height="300"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>Performance Metrics</h3>
+                            <div class="chart-container">
+                                <canvas id="performanceMetricsChart" width="800" height="300"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>Agent Activity</h3>
+                            <div class="chart-container">
+                                <canvas id="agentActivityChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>Error Rates</h3>
+                            <div class="chart-container">
+                                <canvas id="errorRatesChart" width="400" height="300"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-timeline" id="activityTimeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-time">{{ timestamp }}</div>
+                                    <div class="timeline-content">
+                                        <div class="timeline-title">Platform Analytics Initialized</div>
+                                        <div class="timeline-description">Analytics dashboard loaded successfully</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="analytics-section">
+                            <h3>System Health</h3>
+                            <div class="health-indicators">
+                                <div class="health-metric">
+                                    <div class="health-icon">💚</div>
+                                    <div class="health-content">
+                                        <div class="health-label">API Health</div>
+                                        <div class="health-value" id="apiHealth">Healthy</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="health-metric">
+                                    <div class="health-icon">🔋</div>
+                                    <div class="health-content">
+                                        <div class="health-label">Agent Status</div>
+                                        <div class="health-value" id="agentHealth">Active</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="health-metric">
+                                    <div class="health-icon">💾</div>
+                                    <div class="health-content">
+                                        <div class="health-label">Database</div>
+                                        <div class="health-value" id="databaseHealth">Connected</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="health-metric">
+                                    <div class="health-icon">🌐</div>
+                                    <div class="health-content">
+                                        <div class="health-label">Network</div>
+                                        <div class="health-value" id="networkHealth">Stable</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Real-time Status Bar -->
+    <div class="status-bar">
+        <div class="status-item">
+            <span class="status-label">Platform Status:</span>
+            <span class="status-value" id="platformStatus">Ready</span>
+        </div>
+        
+        <div class="status-item">
+            <span class="status-label">Agents:</span>
+            <span class="status-value" id="agentCount">
+                {% if agents_available %}Available{% else %}Unavailable{% endif %}
+            </span>
+        </div>
+        
+        <div class="status-item">
+            <span class="status-label">Active Connections:</span>
+            <span class="status-value" id="activeConnections">1</span>
+        </div>
+        
+        <div class="status-item">
+            <span class="status-label">Last Update:</span>
+            <span class="status-value" id="lastUpdate">{{ timestamp }}</span>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3 id="loadingMessage">Processing...</h3>
+            <p id="loadingDetails">Please wait while we analyze your brand</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/platform.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/realtime.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/workflow-builder.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/analytics-dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/platform-integration.js') }}"></script>
+</body>
+</html>

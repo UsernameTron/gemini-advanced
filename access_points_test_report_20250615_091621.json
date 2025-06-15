@@ -1,0 +1,385 @@
+{
+  "test_timestamp": "2025-06-15T09:16:21.522981",
+  "base_url": "http://localhost:5001",
+  "endpoints_tested": [
+    {
+      "endpoint": "/",
+      "method": "GET",
+      "description": "Main Dashboard",
+      "status_code": 200,
+      "response_time_ms": 9.54,
+      "success": true,
+      "content_type": "text/html; charset=utf-8",
+      "response_size": 8326,
+      "timestamp": "2025-06-15T09:16:21.532550",
+      "response_text": "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Unified AI Platform - Dashboard</title>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\" rel=\"stylesheet\">\n    <style>\n        .status-card { transition: transform 0.2s; }\n        .status-card:ho"
+    },
+    {
+      "endpoint": "/api/status",
+      "method": "GET",
+      "description": "API Status",
+      "status_code": 200,
+      "response_time_ms": 1.73,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 188,
+      "timestamp": "2025-06-15T09:16:21.534347",
+      "response_data": {
+        "platform_name": "Unified AI Platform",
+        "status": "operational",
+        "systems_available": 4,
+        "timestamp": "2025-06-15T09:16:21.534028",
+        "total_systems": 4,
+        "uptime": "0:00:21.534023",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "endpoint": "/api/unified/status",
+      "method": "GET",
+      "description": "Functional Status",
+      "status_code": 200,
+      "response_time_ms": 2.08,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 557,
+      "timestamp": "2025-06-15T09:16:21.536465",
+      "response_data": {
+        "capabilities": [
+          "intelligent_routing",
+          "agent_framework",
+          "vector_search",
+          "satirical_analysis",
+          "analytics_integration",
+          "template_system",
+          "document_processing",
+          "dalle_image_generation",
+          "multi_agent_orchestration",
+          "session_management",
+          "knowledge_base_management",
+          "campaign_management",
+          "persona_management",
+          "brand_intelligence",
+          "rag_enhanced_chat"
+        ],
+        "functional_integrations": {
+          "agent_system": "available",
+          "brand_system": "available",
+          "mindmeld_system": "available",
+          "rag_system": "available"
+        },
+        "platform": "Unified AI Platform",
+        "timestamp": "2025-06-15T09:16:21.536026"
+      }
+    },
+    {
+      "endpoint": "/api/mindmeld/agents",
+      "method": "GET",
+      "description": "MindMeld Agents",
+      "status_code": 200,
+      "response_time_ms": 1.53,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 134,
+      "timestamp": "2025-06-15T09:16:21.538034",
+      "response_data": {
+        "agents": [
+          "analyst",
+          "creative",
+          "technical"
+        ],
+        "framework_version": "1.1",
+        "status": "available",
+        "timestamp": "2025-06-15T09:16:21.537727"
+      }
+    },
+    {
+      "endpoint": "/api/systems",
+      "method": "GET",
+      "description": "Systems Information",
+      "status_code": 200,
+      "response_time_ms": 1.37,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 417,
+      "timestamp": "2025-06-15T09:16:21.539438",
+      "response_data": {
+        "agent_system": {
+          "components": [
+            "web_interface",
+            "analytics"
+          ],
+          "status": "available"
+        },
+        "brand_system": {
+          "components": [
+            "satirical_analysis",
+            "dalle_generation"
+          ],
+          "status": "available"
+        },
+        "mindmeld_framework": {
+          "agents": 12,
+          "status": "available"
+        },
+        "rag_system": {
+          "components": [
+            "document_processing",
+            "vector_search",
+            "knowledge_base",
+            "vector_embeddings",
+            "enhanced_search"
+          ],
+          "status": "available"
+        },
+        "timestamp": "2025-06-15T09:16:21.539158"
+      }
+    },
+    {
+      "endpoint": "/functional",
+      "method": "GET",
+      "description": "Functional Dashboard",
+      "status_code": 200,
+      "response_time_ms": 1.92,
+      "success": true,
+      "content_type": "text/html; charset=utf-8",
+      "response_size": 3785,
+      "timestamp": "2025-06-15T09:16:21.541392",
+      "response_text": "\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Unified AI Platform - Functional Dashboard</title>\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css\" rel=\"stylesheet\">\n</head>\n<body class=\"bg-light\">\n    <nav class=\"navbar navbar-expand-lg navba"
+    },
+    {
+      "endpoint": "/api/test",
+      "method": "GET",
+      "description": "Test Endpoint",
+      "status_code": 200,
+      "response_time_ms": 1.47,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 127,
+      "timestamp": "2025-06-15T09:16:21.554168",
+      "response_data": {
+        "message": "Unified AI Platform API is working",
+        "status": "success",
+        "timestamp": "2025-06-15T09:16:21.553835",
+        "version": "1.0.0"
+      }
+    },
+    {
+      "endpoint": "/api/functional/status",
+      "method": "GET",
+      "description": "Functional Integration Status",
+      "status_code": 200,
+      "response_time_ms": 1.24,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 144,
+      "timestamp": "2025-06-15T09:16:21.555439",
+      "response_data": {
+        "functional_systems": {
+          "agents": true,
+          "brand": true,
+          "mindmeld": true,
+          "rag": true
+        },
+        "timestamp": "2025-06-15T09:16:21.555186",
+        "total_capabilities": 15
+      }
+    },
+    {
+      "endpoint": "/health",
+      "method": "GET",
+      "description": "Health Check",
+      "status_code": 200,
+      "response_time_ms": 1.48,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 153,
+      "timestamp": "2025-06-15T09:16:21.556947",
+      "response_data": {
+        "platform": "Unified AI Platform",
+        "status": "healthy",
+        "systems_available": 4,
+        "timestamp": "2025-06-15T09:16:21.556676",
+        "total_systems": 4,
+        "version": "1.0.0"
+      }
+    },
+    {
+      "endpoint": "/api/health",
+      "method": "GET",
+      "description": "API Health Check",
+      "status_code": 200,
+      "response_time_ms": 1.39,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 168,
+      "timestamp": "2025-06-15T09:16:21.558371",
+      "response_data": {
+        "api_status": "healthy",
+        "functional_layer": true,
+        "systems_initialized": {
+          "agents": true,
+          "brand": true,
+          "mindmeld": true,
+          "rag": true
+        },
+        "timestamp": "2025-06-15T09:16:21.557932"
+      }
+    }
+  ],
+  "functional_tests": [
+    {
+      "endpoint": "/api/brand/analyze",
+      "method": "POST",
+      "description": "Brand Analysis",
+      "status_code": 200,
+      "response_time_ms": 1.57,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 268,
+      "timestamp": "2025-06-15T09:16:21.543019",
+      "response_data": {
+        "analysis": "Mock satirical analysis of TestBrand: A fascinating brand with questionable marketing decisions and ambitious goals that may or may not align with reality.",
+        "mock": true,
+        "status": "completed",
+        "system_status": "mock",
+        "timestamp": "2025-06-15T09:16:21.542642"
+      }
+    },
+    {
+      "endpoint": "/api/brand/generate-image",
+      "method": "POST",
+      "description": "Image Generation",
+      "status_code": 200,
+      "response_time_ms": 2.05,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 225,
+      "timestamp": "2025-06-15T09:16:21.545109",
+      "response_data": {
+        "description": "Mock image generation for: Test image",
+        "image_url": "https://mock-image-service.com/generate?prompt=Test image",
+        "mock": true,
+        "status": "completed",
+        "system_status": "mock",
+        "timestamp": "2025-06-15T09:16:21.544733"
+      }
+    },
+    {
+      "endpoint": "/api/rag/chat",
+      "method": "POST",
+      "description": "RAG Chat",
+      "status_code": 200,
+      "response_time_ms": 1.46,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 306,
+      "timestamp": "2025-06-15T09:16:21.546603",
+      "response_data": {
+        "mock": true,
+        "response": "Mock RAG-enhanced response to: Hello. This response would normally be enhanced with relevant document context and vector similarity search.",
+        "sources": [
+          "mock_document1.pdf",
+          "mock_document2.txt"
+        ],
+        "status": "completed",
+        "system_status": "mock",
+        "timestamp": "2025-06-15T09:16:21.546337"
+      }
+    },
+    {
+      "endpoint": "/api/rag/upload",
+      "method": "POST",
+      "description": "Document Upload (empty)",
+      "status_code": 400,
+      "response_time_ms": 1.41,
+      "success": false,
+      "content_type": "application/json",
+      "response_size": 29,
+      "timestamp": "2025-06-15T09:16:21.548042",
+      "response_data": {
+        "error": "No file uploaded"
+      }
+    },
+    {
+      "endpoint": "/api/agents/chat",
+      "method": "POST",
+      "description": "Agent Chat",
+      "status_code": 200,
+      "response_time_ms": 1.57,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 301,
+      "timestamp": "2025-06-15T09:16:21.549650",
+      "response_data": {
+        "agent_used": "mock_research_agent",
+        "mock": true,
+        "response": "Mock multi-agent response to: Hello agents. This would normally involve intelligent agent routing and specialized processing.",
+        "status": "completed",
+        "system_status": "mock",
+        "timestamp": "2025-06-15T09:16:21.549300",
+        "workflow_id": "mock_wf_123"
+      }
+    },
+    {
+      "endpoint": "/api/agents/workflow",
+      "method": "POST",
+      "description": "Agent Workflow",
+      "status_code": 200,
+      "response_time_ms": 1.43,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 303,
+      "timestamp": "2025-06-15T09:16:21.551122",
+      "response_data": {
+        "agents_used": [
+          "mock_triage",
+          "mock_research",
+          "mock_executor"
+        ],
+        "mock": true,
+        "status": "completed",
+        "steps_completed": 3,
+        "system_status": "mock",
+        "timestamp": "2025-06-15T09:16:21.550852",
+        "workflow_result": "Mock multi-agent workflow for: Test task. This would normally coordinate multiple specialized agents."
+      }
+    },
+    {
+      "endpoint": "/api/unified/capabilities",
+      "method": "GET",
+      "description": "System Capabilities",
+      "status_code": 200,
+      "response_time_ms": 1.5,
+      "success": true,
+      "content_type": "application/json",
+      "response_size": 329,
+      "timestamp": "2025-06-15T09:16:21.552662",
+      "response_data": [
+        "intelligent_routing",
+        "agent_framework",
+        "vector_search",
+        "satirical_analysis",
+        "analytics_integration",
+        "template_system",
+        "document_processing",
+        "dalle_image_generation",
+        "multi_agent_orchestration",
+        "session_management",
+        "knowledge_base_management",
+        "campaign_management",
+        "persona_management",
+        "brand_intelligence",
+        "rag_enhanced_chat"
+      ]
+    }
+  ],
+  "summary": {
+    "total_tests": 17,
+    "successful_tests": 16,
+    "failed_tests": 1,
+    "success_rate": 94.1,
+    "average_response_time_ms": 2.04,
+    "platform_status": "operational"
+  }
+}

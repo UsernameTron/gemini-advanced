@@ -1,0 +1,29 @@
+[Unit]
+Description=Enhanced Brand Deconstruction Engine
+After=network.target
+Wants=network.target
+
+[Service]
+Type=forking
+User=branduser
+Group=branduser
+WorkingDirectory=/opt/brand-deconstruction
+Environment=OPENAI_API_KEY=your_api_key_here
+Environment=FLASK_ENV=production
+Environment=PYTHONPATH=/opt/brand-deconstruction
+ExecStart=/opt/brand-deconstruction/startup.sh start
+ExecStop=/opt/brand-deconstruction/startup.sh stop
+ExecReload=/opt/brand-deconstruction/startup.sh restart
+PIDFile=/var/run/brand-deconstruction.pid
+Restart=always
+RestartSec=10
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/log/brand-deconstruction /opt/brand-deconstruction
+
+[Install]
+WantedBy=multi-user.target

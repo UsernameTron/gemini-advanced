@@ -1,0 +1,92 @@
+{
+  "timestamp": "2025-06-15T09:20:52.644205",
+  "test_summary": {
+    "total_tests": 11,
+    "successful": 11,
+    "failed": 0,
+    "success_rate": 100.0
+  },
+  "test_results": [
+    {
+      "test": "Main Dashboard",
+      "method": "GET",
+      "url": "http://localhost:5001/",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 7.903814315795898
+    },
+    {
+      "test": "API Status",
+      "method": "GET",
+      "url": "http://localhost:5001/api/status",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.9710063934326172
+    },
+    {
+      "test": "Functional Dashboard",
+      "method": "GET",
+      "url": "http://localhost:5001/functional",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 2.710103988647461
+    },
+    {
+      "test": "Health Check",
+      "method": "GET",
+      "url": "http://localhost:5001/health",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 2.0720958709716797
+    },
+    {
+      "test": "System Capabilities",
+      "method": "GET",
+      "url": "http://localhost:5001/api/unified/capabilities",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.8768310546875
+    },
+    {
+      "test": "Brand Analysis",
+      "method": "POST",
+      "url": "http://localhost:5001/api/brand/analyze",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.9969940185546875
+    },
+    {
+      "test": "Image Generation",
+      "method": "POST",
+      "url": "http://localhost:5001/api/brand/generate-image",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.9502639770507812
+    },
+    {
+      "test": "RAG Chat",
+      "method": "POST",
+      "url": "http://localhost:5001/api/rag/chat",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.8889904022216797
+    },
+    {
+      "test": "Agent Chat",
+      "method": "POST",
+      "url": "http://localhost:5001/api/agents/chat",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.889944076538086
+    },
+    {
+      "test": "Agent Workflow",
+      "method": "POST",
+      "url": "http://localhost:5001/api/agents/workflow",
+      "status_code": 200,
+      "success": true,
+      "response_time_ms": 1.6791820526123047
+    }
+  ],
+  "file_upload_test": true
+}
