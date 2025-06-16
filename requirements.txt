@@ -1,0 +1,8 @@
+# Main requirements for UnifiedAIPlatform
+# Add your core dependencies here, e.g.:
+flask
+redis
+openai
+aiokafka
+google-cloud-language
+# Add other production dependencies as needed

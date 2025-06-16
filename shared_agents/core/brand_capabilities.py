@@ -28,3 +28,9 @@ class BrandCapability(Enum):
     MARKET_POSITIONING_AUDIT = "market_positioning_audit"
     TECHNICAL_CREDIBILITY_ASSESSMENT = "technical_credibility_assessment"
     CUSTOMER_EXPERIENCE_ANALYSIS = "customer_experience_analysis"
+    
+    # Additional needed capabilities
+    MARKET_INTELLIGENCE = "market_intelligence"
+    VOICE_SYNTHESIS = "voice_synthesis"
+    VISUAL_CONTENT_CREATION = "visual_content_creation"
+    BRAND_ASSET_GENERATION = "brand_asset_generation"

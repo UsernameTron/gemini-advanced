@@ -12,7 +12,7 @@ import os
 from pathlib import Path
 
 # Test configuration
-BASE_URL = "http://localhost:5001"
+BASE_URL = "http://localhost:5002"
 TEST_TIMEOUT = 30
 
 class UnifiedSystemTester:

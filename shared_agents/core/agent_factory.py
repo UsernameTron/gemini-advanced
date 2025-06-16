@@ -30,11 +30,13 @@ class AgentCapability(Enum):
     TEXT_GENERATION = "text_generation"
     DATA_PROCESSING = "data_processing"
     DOCUMENTATION = "documentation"
+    CONTENT_GENERATION = "content_generation"
     
     # Research and analysis
     RESEARCH = "research"
     TESTING = "testing"
     DEBUGGING = "debugging"
+    ANALYSIS = "analysis"
     
     # Strategic capabilities
     STRATEGIC_PLANNING = "strategic_planning"
