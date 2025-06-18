@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS Creative AI - Retro Terminal</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🤖</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            overflow: hidden;
+            background: #000000;
+        }
+        
+        #app-container {
+            width: 100vw;
+            height: 100vh;
+        }
+        
+        /* Loading screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            color: #00ff41;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loading-text {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            border: 1px solid #00ff41;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: #00ff41;
+            width: 0%;
+            animation: loading 3s ease-out forwards;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-text">INITIALIZING NEXUS CREATIVE AI...</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+        <div style="margin-top: 15px; font-size: 0.9em; opacity: 0.7;">
+            Loading Gemini AI Systems...
+        </div>
+    </div>
+
+    <!-- Main Application Container -->
+    <div id="app-container"></div>
+
+    <!-- Hidden file input for uploads -->
+    <input type="file" id="file-input" multiple accept="image/*,.pdf,.doc,.docx,.txt" style="display: none;">
+
+    <!-- Configuration Script -->
+    <script>
+        // Set global configuration
+        window.GOOGLE_API_KEY = 'AIzaSyCEJ3ee1y00U-TrILQBmRmhALU65j7JoP8';
+        
+        // Remove loading screen after initialization
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('loading-screen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    loadingScreen.remove();
+                }, 500);
+            }
+        }, 3000);
+
+        // Error handling
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
+
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+    </script>
+
+    <!-- Main Application Module -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>

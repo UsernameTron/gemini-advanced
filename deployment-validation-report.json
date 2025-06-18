@@ -1,0 +1,184 @@
+{
+  "timestamp": "2025-06-18T15:13:48.956Z",
+  "tests": [
+    {
+      "test": "File exists: package.json",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: server.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: main.cjs",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: app.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: index.html",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: .env",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: core/GeminiAgent.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: ui/TerminalInterface.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.959Z"
+    },
+    {
+      "test": "File exists: client/RetroAIClient.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "File exists: cli.js",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "File exists: launch_enhanced.sh",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "File exists: README.md",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "API Key configured",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Desktop port configured",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Electron port configured",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Dependency: express",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Dependency: cors",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Dependency: electron",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Dependency: @google/generative-ai",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Start script defined",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "macOS App Bundle exists",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Enhanced launcher exists",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Launcher is executable",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "createBootSound method exists",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "createErrorSound method exists",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Sound effects system present",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.960Z"
+    },
+    {
+      "test": "Endpoint accessible: Main page",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.969Z"
+    },
+    {
+      "test": "Endpoint accessible: Health check",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.970Z"
+    },
+    {
+      "test": "Endpoint accessible: Chat endpoint",
+      "passed": true,
+      "details": "",
+      "timestamp": "2025-06-18T15:13:48.972Z"
+    }
+  ],
+  "summary": {
+    "passed": 29,
+    "failed": 0,
+    "total": 29
+  }
+}
