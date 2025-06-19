@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Navigate to the project directory
+cd "/Users/cpconnor/projects/UnifiedAIPlatform/retro-ai-desktop"
+
+# Launch the web interface using the launcher script
+exec ./launch-web-interface.command

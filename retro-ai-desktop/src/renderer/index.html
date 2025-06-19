@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro AI Desktop - 1970s Command Center</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Main Terminal Interface -->
+        <div id="terminal-container">
+            <div id="terminal-header">
+                <div class="terminal-title">
+                    <span class="blink">●</span> UNIFIED AI COMMAND CENTER v2.0
+                </div>
+                <div class="terminal-status">
+                    <span id="status-indicator" class="status-ok">OPERATIONAL</span>
+                    <span id="timestamp"></span>
+                </div>
+            </div>
+            
+            <div id="terminal-content">
+                <div id="boot-sequence" class="boot-sequence">
+                    <div class="boot-line">INITIALIZING RETRO AI DESKTOP...</div>
+                    <div class="boot-line">LOADING GEMINI 2.0 FLASH...................... [ <span class="status-ok">OK</span> ]</div>
+                    <div class="boot-line">LOADING IMAGEN 3.0............................ [ <span class="status-ok">OK</span> ]</div>
+                    <div class="boot-line">CONNECTING TO AGENT ECOSYSTEM................. [ <span class="status-ok">OK</span> ]</div>
+                    <div class="boot-line">ENABLING CONVERSATIONAL IMAGE EDITING........ [ <span class="status-ok">OK</span> ]</div>
+                    <div class="boot-line">ACTIVATING MULTI-MODAL GENERATION............ [ <span class="status-ok">OK</span> ]</div>
+                    <div class="boot-line">SYSTEM READY FOR COMMANDS..................... [ <span class="status-ok">OK</span> ]</div>
+                </div>
+                
+                <div id="terminal-output"></div>
+                
+                <div id="command-input-area">
+                    <span id="command-prompt">retro-ai-desktop $ </span>
+                    <input type="text" id="command-input" autocomplete="off" spellcheck="false" />
+                    <span id="cursor" class="blink">_</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Panel for Images and Gallery -->
+        <div id="side-panel">
+            <div class="panel-header">
+                <h3>IMAGE GALLERY</h3>
+                <button id="upload-btn" class="retro-btn">UPLOAD</button>
+            </div>
+            
+            <div id="image-gallery">
+                <div class="gallery-placeholder">
+                    <div class="placeholder-text">
+                        ┌─────────────────────┐<br>
+                        │  GENERATED IMAGES   │<br>
+                        │  WILL APPEAR HERE   │<br>
+                        │                     │<br>
+                        │  TYPE 'GEN' OR      │<br>
+                        │  'IMAGEN' TO START  │<br>
+                        └─────────────────────┘
+                    </div>
+                </div>
+            </div>
+            
+            <div class="panel-controls">
+                <button id="clear-gallery" class="retro-btn">CLEAR</button>
+                <button id="export-gallery" class="retro-btn">EXPORT</button>
+            </div>
+        </div>
+
+        <!-- Quick Command Palette -->
+        <div id="command-palette" class="hidden">
+            <div class="palette-header">QUICK COMMANDS</div>
+            <div class="palette-grid">
+                <button class="palette-btn" data-command="GEN">GEN<br><small>Gemini Generation</small></button>
+                <button class="palette-btn" data-command="IMAGEN">IMAGEN<br><small>High Quality</small></button>
+                <button class="palette-btn" data-command="EDIT">EDIT<br><small>Image Editing</small></button>
+                <button class="palette-btn" data-command="PHOTO">PHOTO<br><small>Photography</small></button>
+                <button class="palette-btn" data-command="ART">ART<br><small>Artistic Styles</small></button>
+                <button class="palette-btn" data-command="LOGO">LOGO<br><small>Logo Design</small></button>
+                <button class="palette-btn" data-command="CODE">CODE<br><small>Code Analysis</small></button>
+                <button class="palette-btn" data-command="DEBUG">DEBUG<br><small>Debug Help</small></button>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="hidden">
+            <div class="loading-content">
+                <div class="loading-text">PROCESSING...</div>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <div class="loading-details">Generating AI content...</div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div id="help-modal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>COMMAND REFERENCE</h2>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="help-section">
+                        <h3>IMAGE GENERATION:</h3>
+                        <ul>
+                            <li><strong>GEN [prompt]</strong> - Gemini conversational generation</li>
+                            <li><strong>IMAGEN [prompt]</strong> - High-quality Imagen generation</li>
+                            <li><strong>PHOTO [type] [subject]</strong> - Professional photography</li>
+                            <li><strong>ART [subject] [style]</strong> - Artistic styles</li>
+                            <li><strong>LOGO [company] [style] [industry]</strong> - Logo design</li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h3>IMAGE EDITING:</h3>
+                        <ul>
+                            <li><strong>EDIT [session] [prompt]</strong> - Edit uploaded images</li>
+                            <li><strong>CHAT [prompt]</strong> - Multi-turn image conversations</li>
+                            <li><strong>STYLE [style] [subject]</strong> - Style transfer</li>
+                            <li><strong>TEXT [content]</strong> - Add text to images</li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h3>SYSTEM COMMANDS:</h3>
+                        <ul>
+                            <li><strong>HELP</strong> - Show this help</li>
+                            <li><strong>STATUS</strong> - System status</li>
+                            <li><strong>GALLERY</strong> - View image gallery</li>
+                            <li><strong>CLEAR</strong> - Clear terminal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- File Input for Uploads -->
+    <input type="file" id="file-input" accept="image/*" style="display: none;" />
+
+    <!-- Scripts -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/gallery.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
